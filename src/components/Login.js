@@ -29,6 +29,7 @@ const Login = props => {
          } else {
             console.log(response);
             dispatch(signIn(response));
+            localStorage.setItem('token', response.jwt);
             props.history.push('/');
          }
       });
