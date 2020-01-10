@@ -5,10 +5,13 @@ import Link from '@material-ui/core/Link';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import { api } from '../services/api';
+import { SIGN_IN as signIn } from '../actions/auth';
+import { useDispatch } from 'react-redux';
 
 const Login = props => {
    const [username, setUsername] = useState('');
    const [password, setPassword] = useState('');
+   const dispatch = useDispatch();
 
    const handleUsernameChange = e => {
       setUsername(e.target.value);
@@ -21,7 +24,13 @@ const Login = props => {
    const handleSubmit = e => {
       e.preventDefault();
       api.auth.login({ username, password }).then(response => {
-         response.error ? console.log(response.error) : props.history.push('/');
+         if (response.error) {
+            console.log(response.error);
+         } else {
+            console.log(response);
+            dispatch(signIn(response));
+            props.history.push('/');
+         }
       });
    };
 
