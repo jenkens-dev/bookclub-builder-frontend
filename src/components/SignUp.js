@@ -8,6 +8,8 @@ import S3FileUpload from 'react-s3';
 const SignUp = props => {
    const [username, setUsername] = useState('');
    const [password, setPassword] = useState('');
+   const [picture, setPicture] = useState('https://i.imgur.com/VfFU5d8.jpg');
+
    const dispatch = useDispatch();
 
    const config = {
@@ -27,12 +29,12 @@ const SignUp = props => {
 
    const handleSubmit = e => {
       e.preventDefault();
-      api.auth.signup({ username, password }).then(response => {
+      api.auth.signup({ username, password, picture }).then(response => {
          if (response.error) {
             console.log(response.error);
          } else {
-            console.log(response);
             dispatch(signIn(response));
+            localStorage.setItem('token', response.jwt);
             props.history.push('/');
          }
       });
@@ -42,6 +44,7 @@ const SignUp = props => {
       S3FileUpload.uploadFile(e.target.files[0], config)
          .then(data => {
             console.log(data.location);
+            setPicture(data.location);
          })
          .catch(error => {
             alert(error);
@@ -77,9 +80,7 @@ const SignUp = props => {
                onChange={upload}
             />
             <label htmlFor="raised-button-file">
-               <Button variant="raised" component="span">
-                  Upload
-               </Button>
+               <Button component="span">Upload</Button>
             </label>
             <input type="submit" />
          </form>

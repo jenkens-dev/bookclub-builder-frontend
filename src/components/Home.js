@@ -1,9 +1,7 @@
 import React from 'react';
 import { api } from '../services/api';
 import BookClubCard from './BookClubCard';
-import { Redirect } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const Home = () => {
    const [bookclubs, fetched] = api.useNetworkResource(
