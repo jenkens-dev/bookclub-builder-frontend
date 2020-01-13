@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { api } from '../services/api';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import AdminOptions from './AdminOptions';
@@ -52,7 +51,7 @@ const BookClubShow = ({ props, match }) => {
    return (
       <div>
          <h1>{name}</h1>
-         {isAdmin ? <AdminOptions /> : <MemberOptions />}
+         {isAdmin() ? <AdminOptions /> : <MemberOptions />}
          <img src={picture} />
          <p>{description}</p>
       </div>
