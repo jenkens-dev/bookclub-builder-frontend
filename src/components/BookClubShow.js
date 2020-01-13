@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { api } from '../services/api';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import AdminOptions from './AdminOptions';
+import MemberOptions from './MemberOptions';
 
 const BookClubShow = ({ props, match }) => {
    const [bookclubs, setBookclubs] = useState('');
@@ -32,10 +34,6 @@ const BookClubShow = ({ props, match }) => {
       return null;
    }
 
-   const handleClick = () => {
-      console.log('hi');
-   };
-
    const isMember = () => {
       let isMemberArray = members.filter(member => member.id === currentUser);
       if (isMemberArray.length > 0) {
@@ -49,15 +47,12 @@ const BookClubShow = ({ props, match }) => {
       return bookclubs.bookclub_users[0].is_admin === currentUser;
    };
 
-   console.log(bookclubs);
-   console.log(isAdmin());
    const { name, description, picture } = bookclubs;
-   console.log(members);
+
    return (
       <div>
-         <h1>{isMember() ? <div>Member</div> : <div>No</div>}</h1>
          <h1>{name}</h1>
-         <button onClick={handleClick}>Join</button>
+         {isAdmin ? <AdminOptions /> : <MemberOptions />}
          <img src={picture} />
          <p>{description}</p>
       </div>
