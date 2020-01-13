@@ -7,17 +7,9 @@ const BookClubShow = ({ props, match }) => {
    const [bookclubs, setBookclubs] = useState('');
    const [fetched, setFetched] = useState(false);
    const [members, setMembers] = useState([]);
-   const [isAdmin, setAdmin] = useState(false);
    const currentUser = useSelector(state => state.auth.user.id);
    const history = useHistory();
    const token = localStorage.getItem('token');
-
-   //    console.log(bookClubDetails.id);
-   //       console.log(currentUser);
-   //       let members = users.map(user => {
-   //          return user.id;
-   //       });
-   //       console.log(members.includes(currentUser));
 
    useEffect(() => {
       fetch(`http://localhost:3000/api/v1/bookclubs/${match.params.id}`)
@@ -28,12 +20,6 @@ const BookClubShow = ({ props, match }) => {
          })
          .finally(() => {
             console.log(members);
-            // console.log(isMemberBoolean);
-            // if (isMemberBoolean.length > 0) {
-            //    setMember(true);
-            // } else {
-            //    setMember(false);
-            // }
             setFetched(true);
          });
    }, []);
@@ -51,15 +37,20 @@ const BookClubShow = ({ props, match }) => {
    };
 
    const isMember = () => {
-      let temp = members.filter(member => member.id === currentUser);
-      if (temp.length > 0) {
+      let isMemberArray = members.filter(member => member.id === currentUser);
+      if (isMemberArray.length > 0) {
          return true;
       } else {
          return false;
       }
    };
 
+   const isAdmin = () => {
+      return bookclubs.bookclub_users[0].is_admin === currentUser;
+   };
+
    console.log(bookclubs);
+   console.log(isAdmin());
    const { name, description, picture } = bookclubs;
    console.log(members);
    return (
