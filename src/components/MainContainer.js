@@ -21,6 +21,11 @@ const MainContainer = props => {
          />
          <Route
             exact
+            path="/bookclubs/:id"
+            render={routerProps => <div>HI</div>}
+         />
+         <Route
+            exact
             path="/demo"
             render={routerProps => <Demo {...routerProps} />}
          />
