@@ -49,7 +49,6 @@ const useNetworkResource = url => {
    return [response, fetched, { error, forceRetry: () => setRetry(!retry) }];
 };
 
-
 const login = data => {
    return fetch(`${API_ROOT}/login`, {
       method: 'POST',
@@ -62,7 +61,11 @@ const signup = data => {
    return fetch(`${API_ROOT}/users`, {
       method: 'POST',
       headers,
-      body: JSON.stringify(data),
+      body: JSON.stringify({
+         username: data.username,
+         password: data.password,
+         profile_picture: data.picture,
+      }),
    }).then(res => res.json());
 };
 
