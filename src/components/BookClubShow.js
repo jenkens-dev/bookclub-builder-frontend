@@ -20,7 +20,6 @@ const BookClubShow = ({ props, match }) => {
             setMembers(data.users);
          })
          .finally(() => {
-            console.log(members);
             setFetched(true);
          });
    }, []);
