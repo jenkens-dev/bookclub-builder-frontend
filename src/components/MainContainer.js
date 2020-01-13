@@ -5,17 +5,9 @@ import { useDispatch } from 'react-redux';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
+import Demo from './Demo';
 
 const MainContainer = props => {
-   const dispatch = useDispatch();
-   const token = localStorage.getItem('token');
-
-   useEffect(() => {
-      if (!token) {
-         console.log('redirect');
-      }
-   }, [dispatch, token]);
-
    return (
       <div>
          <Route exact path="/" render={() => <Home />} />
@@ -28,6 +20,11 @@ const MainContainer = props => {
             exact
             path="/signup"
             render={routerProps => <SignUp {...routerProps} />}
+         />
+         <Route
+            exact
+            path="/demo"
+            render={routerProps => <Demo {...routerProps} />}
          />
       </div>
    );
