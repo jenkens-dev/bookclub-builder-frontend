@@ -4,3 +4,10 @@ export const CURRENT_BOOKCLUB = bookclub => {
       bookclub,
    };
 };
+
+export const ADD_USER = users => {
+   return {
+      type: 'ADD_USER',
+      users,
+   };
+};

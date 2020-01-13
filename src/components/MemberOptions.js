@@ -1,14 +1,16 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { ADD_USER as addUser } from '../actions/bookclub';
 
 const MemberOptions = () => {
-   const users = useSelector(state => state.bookclub.bookclub.users);
-   const currentUser = useSelector(state => state.auth.user.id);
-   console.log(users);
+   const bookclub = useSelector(state => state.bookclub.bookclub);
+   const currentUser = useSelector(state => state.auth.user);
+   console.log(currentUser);
+   const dispatch = useDispatch();
 
    const isMember = () => {
-      let temp = users.filter(user => {
-         return user.id === currentUser;
+      let temp = bookclub.users.filter(user => {
+         return user.id === currentUser.id;
       });
       if (temp.length > 0) {
          return true;
@@ -16,12 +18,19 @@ const MemberOptions = () => {
       return false;
    };
 
+   const leaveBookClub = () => {};
+
+   const joinBookClub = () => {
+      bookclub.users.push(currentUser);
+      dispatch(addUser(bookclub.users));
+   };
+
    return (
       <div>
          {isMember() ? (
-            <button>Leave Bookclub</button>
+            <button onClick={leaveBookClub}>Leave Bookclub</button>
          ) : (
-            <button>Join Bookclub</button>
+            <button onClick={joinBookClub}>Join Bookclub</button>
          )}
       </div>
    );
