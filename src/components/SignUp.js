@@ -2,11 +2,20 @@ import React, { useState } from 'react';
 import { api } from '../services/api';
 import { SIGN_IN as signIn } from '../actions/auth';
 import { useDispatch } from 'react-redux';
+import Button from '@material-ui/core/Button';
+import S3FileUpload from 'react-s3';
 
 const SignUp = props => {
    const [username, setUsername] = useState('');
    const [password, setPassword] = useState('');
    const dispatch = useDispatch();
+
+   const config = {
+      bucketName: 'bookclub-photos',
+      region: 'us-west-2',
+      accessKeyId: process.env.REACT_APP_BOOKCLUB_ACCESS_KEY_ID,
+      secretAccessKey: process.env.REACT_APP_BOOKCLUB_SECRET_ACCESS_KEY,
+   };
 
    const handleUsernameChange = e => {
       setUsername(e.target.value);
@@ -29,6 +38,16 @@ const SignUp = props => {
       });
    };
 
+   const upload = e => {
+      S3FileUpload.uploadFile(e.target.files[0], config)
+         .then(data => {
+            console.log(data.location);
+         })
+         .catch(error => {
+            alert(error);
+         });
+   };
+
    return (
       <div>
          <h1>Sign Up</h1>
@@ -48,6 +67,19 @@ const SignUp = props => {
                   value={password}
                   onChange={handlePasswordChange}
                />
+            </label>
+            <input
+               hidden
+               accept="image/*"
+               id="raised-button-file"
+               multiple
+               type="file"
+               onChange={upload}
+            />
+            <label htmlFor="raised-button-file">
+               <Button variant="raised" component="span">
+                  Upload
+               </Button>
             </label>
             <input type="submit" />
          </form>
