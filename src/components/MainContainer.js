@@ -6,6 +6,7 @@ import SignUp from './SignUp';
 import Demo from './Demo';
 import BookClubShow from './BookClubShow';
 import CreatePoll from './CreatePoll';
+import EditBookClub from './EditBookClub';
 
 const MainContainer = props => {
    return (
@@ -30,6 +31,11 @@ const MainContainer = props => {
             exact
             path="/bookclubs/:id/poll"
             render={routerProps => <CreatePoll {...routerProps} />}
+         />
+         <Route
+            exact
+            path="/bookclubs/:id/edit"
+            render={routerProps => <EditBookClub {...routerProps} />}
          />
          <Route
             exact
