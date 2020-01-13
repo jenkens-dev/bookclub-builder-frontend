@@ -4,6 +4,7 @@ import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
 import Demo from './Demo';
+import BookClubShow from './BookClubShow';
 
 const MainContainer = props => {
    return (
@@ -22,7 +23,7 @@ const MainContainer = props => {
          <Route
             exact
             path="/bookclubs/:id"
-            render={routerProps => <div>HI</div>}
+            render={routerProps => <BookClubShow {...routerProps} />}
          />
          <Route
             exact
