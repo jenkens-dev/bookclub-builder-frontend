@@ -1,24 +1,37 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-
+import { useSelector } from 'react-redux';
 
 const NavBar = () => {
+   const currentUser = useSelector(state => state.auth.user.id);
+   console.log(currentUser);
    return (
-      <AppBar position="static">
-         <Toolbar>
-            <IconButton
-               edge="start"
-               color="inherit"
-               aria-label="menu"
-            ></IconButton>
-            <Typography variant="h6">News</Typography>
-            <Button color="inherit">Login</Button>
-         </Toolbar>
-      </AppBar>
+      <div>
+         {currentUser ? (
+            <AppBar position="static">
+               <Toolbar>
+                  <Button color="inherit" href="/">
+                     Home
+                  </Button>
+                  <Button color="inherit">My Bookclubs</Button>
+                  <Button color="inherit">Create Bookclub</Button>
+               </Toolbar>
+            </AppBar>
+         ) : (
+            <AppBar position="static">
+               <Toolbar>
+                  <Button color="inherit" href="/">
+                     Home
+                  </Button>
+                  <Button color="inherit" href="/login">
+                     Login
+                  </Button>
+               </Toolbar>
+            </AppBar>
+         )}
+      </div>
    );
 };
 
