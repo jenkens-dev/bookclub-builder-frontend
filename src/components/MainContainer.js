@@ -7,10 +7,12 @@ import Demo from './Demo';
 import BookClubShow from './BookClubShow';
 import CreatePoll from './CreatePoll';
 import EditBookClub from './EditBookClub';
+import NavBar from './NavBar';
 
 const MainContainer = props => {
    return (
       <div>
+         <NavBar />
          <Route exact path="/" render={() => <Home />} />
          <Route
             exact

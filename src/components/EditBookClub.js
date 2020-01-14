@@ -61,10 +61,9 @@ const EditBookClub = () => {
             description,
          }),
       })
-         .then(response => {
-            response.json();
-         })
+         .then(response => response.json())
          .then(data => {
+            //need to update redux store but data is undefined for some reason
             console.log(data);
             history.push(`/bookclubs/${bookclubId}`);
          });
@@ -85,6 +84,7 @@ const EditBookClub = () => {
                   onChange={handleDescriptionChange}
                />
             </label>
+            <img src={picture} />
             <input
                hidden
                accept="image/*"
