@@ -4,7 +4,7 @@ export default (state = {}, action) => {
          return {
             bookclub: action.bookclub,
          };
-      case 'ADD_USER':
+      case 'UPDATE_USER':
          return {
             ...state,
             bookclub: {

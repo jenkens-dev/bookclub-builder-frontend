@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ADD_USER as addUser } from '../actions/bookclub';
+import { UPDATE_USER as updateUser } from '../actions/bookclub';
 
 const MemberOptions = () => {
    const bookclub = useSelector(state => state.bookclub.bookclub);
@@ -17,11 +17,29 @@ const MemberOptions = () => {
       return false;
    };
 
-   const leaveBookClub = () => {};
+   const leaveBookClub = () => {
+      let index = bookclub.users.findIndex(user => user.id === currentUser.id);
+      bookclub.users.splice(index, 1);
+      fetch(`http://localhost:3000/api/v1/bookclub_users/id`, {
+         method: 'DELETE',
+         headers: {
+            'Content-Type': 'application/json',
+            Accepts: 'application/json',
+         },
+         body: JSON.stringify({
+            bookclub_id: bookclub.id,
+            user_id: currentUser.id,
+         }),
+      }).then(response => {
+         if (!response.error) {
+            dispatch(updateUser(bookclub.users));
+         }
+      });
+   };
 
    const joinBookClub = () => {
       bookclub.users.push(currentUser);
-      dispatch(addUser(bookclub.users));
+      dispatch(updateUser(bookclub.users));
       fetch(`http://localhost:3000/api/v1/bookclub_users`, {
          method: 'POST',
          headers: {

@@ -5,9 +5,9 @@ export const CURRENT_BOOKCLUB = bookclub => {
    };
 };
 
-export const ADD_USER = users => {
+export const UPDATE_USER = users => {
    return {
-      type: 'ADD_USER',
+      type: 'UPDATE_USER',
       users,
    };
 };
