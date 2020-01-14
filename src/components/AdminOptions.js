@@ -10,7 +10,7 @@ const AdminOptions = () => {
             <button>Create Poll</button>
          </Link>
          <Link to={`/bookclubs/${id}/edit`}>
-            <button>Edit Club</button>
+            <button>Edit Bookclub</button>
          </Link>
       </div>
    );
