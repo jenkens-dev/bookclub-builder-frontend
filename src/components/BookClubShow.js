@@ -20,7 +20,7 @@ const BookClubShow = ({ props, match }) => {
          .finally(() => {
             setFetched(true);
          });
-   }, []);
+   }, [match.params.id]);
 
    if (!token || !currentUser) {
       history.push('/login');
@@ -40,7 +40,7 @@ const BookClubShow = ({ props, match }) => {
       <div>
          <h1>{name}</h1>
          {isAdmin() ? <AdminOptions /> : <MemberOptions />}
-         <img src={picture} />
+         <img src={picture} alt="bookclub" />
          <p>{description}</p>
       </div>
    );

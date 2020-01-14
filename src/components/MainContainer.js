@@ -3,14 +3,17 @@ import { Route } from 'react-router-dom';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
-import Demo from './Demo';
 import BookClubShow from './BookClubShow';
 import CreatePoll from './CreatePoll';
 import EditBookClub from './EditBookClub';
+import NavBar from './NavBar';
+import CreateBookClub from './CreateBookClub';
+import MyBookClub from './MyBookClubs';
 
 const MainContainer = props => {
    return (
       <div>
+         <NavBar />
          <Route exact path="/" render={() => <Home />} />
          <Route
             exact
@@ -39,8 +42,13 @@ const MainContainer = props => {
          />
          <Route
             exact
-            path="/demo"
-            render={routerProps => <Demo {...routerProps} />}
+            path="/bookclubs"
+            render={routerProps => <CreateBookClub {...routerProps} />}
+         />
+         <Route
+            exact
+            path="/:id/bookclubs"
+            render={routerProps => <MyBookClub {...routerProps} />}
          />
       </div>
    );
