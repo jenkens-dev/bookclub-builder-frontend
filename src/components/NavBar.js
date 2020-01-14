@@ -3,12 +3,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
    const currentUser = useSelector(state => state.auth.user.id);
-   const history = useHistory();
 
    return (
       <div>
@@ -18,7 +16,7 @@ const NavBar = () => {
                   <Link to="/">
                      <Button color="inherit">Home</Button>
                   </Link>
-                  <Link to="/">
+                  <Link to={`/${currentUser}/bookclubs`}>
                      <Button color="inherit">My Bookclubs</Button>
                   </Link>
                   <Link to="/bookclubs">
