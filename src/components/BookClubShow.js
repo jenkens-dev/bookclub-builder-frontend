@@ -7,7 +7,6 @@ import MemberOptions from './MemberOptions';
 const BookClubShow = ({ props, match }) => {
    const [bookclubs, setBookclubs] = useState('');
    const [fetched, setFetched] = useState(false);
-   const [members, setMembers] = useState([]);
    const currentUser = useSelector(state => state.auth.user.id);
    const history = useHistory();
    const token = localStorage.getItem('token');
@@ -17,7 +16,6 @@ const BookClubShow = ({ props, match }) => {
          .then(response => response.json())
          .then(data => {
             setBookclubs(data);
-            setMembers(data.users);
          })
          .finally(() => {
             setFetched(true);
@@ -31,15 +29,6 @@ const BookClubShow = ({ props, match }) => {
    if (!fetched) {
       return null;
    }
-
-   const isMember = () => {
-      let isMemberArray = members.filter(member => member.id === currentUser);
-      if (isMemberArray.length > 0) {
-         return true;
-      } else {
-         return false;
-      }
-   };
 
    const isAdmin = () => {
       return bookclubs.bookclub_users[0].is_admin === currentUser;
