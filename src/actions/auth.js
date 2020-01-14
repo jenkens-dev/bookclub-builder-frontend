@@ -4,3 +4,9 @@ export const SIGN_IN = user => {
       user,
    };
 };
+
+export const SIGN_OUT = () => {
+   return {
+      type: 'SIGN_OUT',
+   };
+};
