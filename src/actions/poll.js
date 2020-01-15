@@ -4,3 +4,10 @@ export const CREATE_POLL = poll => {
       poll,
    };
 };
+
+export const CREATE_OPTION = option => {
+   return {
+      type: 'CREATE_OPTION',
+      option,
+   };
+};

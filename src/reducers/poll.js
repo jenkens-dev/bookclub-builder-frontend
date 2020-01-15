@@ -4,6 +4,13 @@ export default (state = {}, action) => {
          return {
             poll: action.poll,
          };
+      case 'CREATE_OPTION':
+         return {
+            poll: {
+               ...state.poll,
+               option: [...state.poll.option, action.option],
+            },
+         };
       default:
          return state;
    }
