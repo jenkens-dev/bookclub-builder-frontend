@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import PollOptionShow from './PollOptionShow';
 
 const PollOptions = () => {
    const poll = useSelector(state => state.poll.poll);
+   const [options, setOptions] = useState([]);
    const [select, setSelect] = useState('inauthor');
    const [search, setSearch] = useState('');
 
@@ -13,7 +15,8 @@ const PollOptions = () => {
       )
          .then(response => response.json())
          .then(data => {
-            console.log(data);
+            console.log(data.items);
+            setOptions(data.items);
          });
    };
 
@@ -43,6 +46,9 @@ const PollOptions = () => {
                <input type="submit" />
             </label>
          </form>
+         {options.map(option => (
+            <PollOptionShow key={option.id} option={option} />
+         ))}
       </div>
    );
 };
