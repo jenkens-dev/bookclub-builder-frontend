@@ -1,7 +1,9 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 const PollOptions = () => {
-   return <div></div>;
+   const poll = useSelector(state => state.poll.poll);
+   return <div>Hi</div>;
 };
 
 export default PollOptions;

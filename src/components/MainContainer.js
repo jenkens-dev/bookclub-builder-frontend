@@ -9,6 +9,7 @@ import EditBookClub from './EditBookClub';
 import NavBar from './NavBar';
 import CreateBookClub from './CreateBookClub';
 import MyBookClub from './MyBookClubs';
+import PollOptions from './PollOptions';
 
 const MainContainer = props => {
    return (
@@ -34,6 +35,11 @@ const MainContainer = props => {
             exact
             path="/bookclubs/:id/poll"
             render={routerProps => <CreatePoll {...routerProps} />}
+         />
+         <Route
+            exact
+            path="/bookclubs/:id/:poll_id/options"
+            render={routerProps => <PollOptions {...routerProps} />}
          />
          <Route
             exact

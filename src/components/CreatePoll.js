@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { CREATE_POLL as createPoll } from '../actions/poll';
 
 const CreatePoll = () => {
    const bookclub = useSelector(state => state.bookclub.bookclub);
    const [title, setTitle] = useState('');
+   const dispatch = useDispatch();
+   const history = useHistory();
 
    const handleChange = event => {
       setTitle(event.target.value);
@@ -21,7 +25,13 @@ const CreatePoll = () => {
             name: title,
             bookclub_id: bookclub.id,
          }),
-      });
+      })
+         .then(response => response.json())
+         .then(data => {
+            console.log(data);
+            dispatch(createPoll(data));
+            history.push(`/bookclubs/${bookclub.id}/${data.id}/options`);
+         });
    };
 
    return (
