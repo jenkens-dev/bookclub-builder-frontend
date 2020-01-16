@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_OPTION as createOption } from '../actions/poll';
 
 const PollOptionShow = props => {
+   const poll = useSelector(state => state.poll.poll);
    const bookclub = useSelector(state => state.bookclub.bookclub);
    const dispatch = useDispatch();
    const history = useHistory();
@@ -16,12 +17,23 @@ const PollOptionShow = props => {
 
    const handleClick = () => {
       console.log(props.option);
-      fetch(``, {
+      fetch(`http://localhost:3000/api/v1/polls/${poll.id}/options`, {
          method: 'POST',
-         headers: {},
-         body: JSON.stringify({}),
-      });
-      dispatch(createOption(props.option));
+         headers: {
+            'Content-Type': 'application/json',
+            Accepts: 'application/json',
+         },
+         body: JSON.stringify({
+            google_book_id: props.option.id,
+            poll_id: poll.id,
+            votes: 0,
+         }),
+      })
+         .then(response => response.json())
+         .then(data => {
+            console.log(data);
+            dispatch(createOption(props.option));
+         });
    };
 
    return (
