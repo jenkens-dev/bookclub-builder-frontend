@@ -5,6 +5,7 @@ import { CURRENT_POLL as currentPoll } from '../actions/poll';
 import PollShow from './PollShow';
 import AdminOptions from './AdminOptions';
 import MemberOptions from './MemberOptions';
+import BookModal from './BookModal';
 
 const BookClubShow = ({ props, match }) => {
    const [bookclubs, setBookclubs] = useState('');
@@ -42,11 +43,14 @@ const BookClubShow = ({ props, match }) => {
 
    return (
       <div>
-         <h1>{name}</h1>
-         {isAdmin() ? <AdminOptions /> : <MemberOptions />}
-         <img src={picture} alt="bookclub" />
-         <p>{description}</p>
-         <PollShow />
+         <div>
+            <h1>{name}</h1>
+            {isAdmin() ? <AdminOptions /> : <MemberOptions />}
+            <img src={picture} alt="bookclub" />
+            <p>{description}</p>
+            <PollShow />
+         </div>
+         <BookModal />
       </div>
    );
 };

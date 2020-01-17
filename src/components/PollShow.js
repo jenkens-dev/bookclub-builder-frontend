@@ -7,7 +7,7 @@ const PollShow = () => {
 
    const displayPollOptions = () => {
       return poll.poll_options.map(option => {
-         return <PollVote key={option.id} google_id={option.google_book_id} />;
+         return <PollVote key={option.id} option={option} />;
       });
    };
 
