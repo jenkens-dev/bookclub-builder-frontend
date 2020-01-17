@@ -21,7 +21,6 @@ const CreateBookClub = () => {
    const upload = e => {
       S3FileUpload.uploadFile(e.target.files[0], config)
          .then(data => {
-            console.log(data.location);
             setPicture(data.location);
          })
          .catch(error => {
@@ -54,7 +53,6 @@ const CreateBookClub = () => {
       })
          .then(response => response.json())
          .then(data => {
-            console.log(data);
             history.push('/');
          });
    };

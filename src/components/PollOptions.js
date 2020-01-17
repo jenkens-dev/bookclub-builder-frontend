@@ -15,7 +15,6 @@ const PollOptions = () => {
       )
          .then(response => response.json())
          .then(data => {
-            console.log(data.items);
             setOptions(data.items);
          });
    };
