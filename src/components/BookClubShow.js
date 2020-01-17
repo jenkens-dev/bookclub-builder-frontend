@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { CURRENT_POLL as currentPoll } from '../actions/poll';
+import PollShow from './PollShow';
 import AdminOptions from './AdminOptions';
 import MemberOptions from './MemberOptions';
 
 const BookClubShow = ({ props, match }) => {
    const [bookclubs, setBookclubs] = useState('');
    const [fetched, setFetched] = useState(false);
+   const dispatch = useDispatch();
    const currentUser = useSelector(state => state.auth.user.id);
    const history = useHistory();
    const token = localStorage.getItem('token');
@@ -16,6 +19,7 @@ const BookClubShow = ({ props, match }) => {
          .then(response => response.json())
          .then(data => {
             setBookclubs(data);
+            dispatch(currentPoll(data.poll[0]));
          })
          .finally(() => {
             setFetched(true);
@@ -31,10 +35,10 @@ const BookClubShow = ({ props, match }) => {
    }
 
    const isAdmin = () => {
-      return bookclubs.bookclub_users[0].is_admin === currentUser;
+      return bookclubs.bookclub.bookclub_users[0].is_admin === currentUser;
    };
 
-   const { name, description, picture } = bookclubs;
+   const { name, description, picture } = bookclubs.bookclub;
 
    return (
       <div>
@@ -42,6 +46,7 @@ const BookClubShow = ({ props, match }) => {
          {isAdmin() ? <AdminOptions /> : <MemberOptions />}
          <img src={picture} alt="bookclub" />
          <p>{description}</p>
+         <PollShow />
       </div>
    );
 };
