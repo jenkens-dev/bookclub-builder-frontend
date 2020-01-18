@@ -3,6 +3,7 @@ import Modal from '@material-ui/core/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { TOGGLE_MODAL_STATUS as toggleModalStatus } from '../actions/modal';
 import { makeStyles } from '@material-ui/core/styles';
+import Interweave, { Markup } from 'interweave';
 
 const BookModal = () => {
    function getModalStyle() {
@@ -53,9 +54,11 @@ const BookModal = () => {
                <h2 id="simple-modal-title">
                   {book ? book.volumeInfo.title : null}
                </h2>
-               <p id="simple-modal-description">
-                  {book ? book.volumeInfo.description : null}
-               </p>
+               <div id="simple-modal-description">
+                  {book ? (
+                     <Interweave content={book.volumeInfo.description} />
+                  ) : null}
+               </div>
             </div>
          </Modal>
       </div>
