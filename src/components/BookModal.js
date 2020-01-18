@@ -35,7 +35,6 @@ const BookModal = () => {
    const [modalStyle] = React.useState(getModalStyle);
    const dispatch = useDispatch();
    const book = useSelector(state => state.book.book);
-   console.log(book);
    const open = useSelector(state => state.modal.open);
 
    const handleClose = () => {
