@@ -11,6 +11,7 @@ const BookClubShow = ({ props, match }) => {
    const [bookclubs, setBookclubs] = useState('');
    const [fetched, setFetched] = useState(false);
    const dispatch = useDispatch();
+   const poll = useSelector(state => state.poll.poll);
    const currentUser = useSelector(state => state.auth.user.id);
    const history = useHistory();
    const token = localStorage.getItem('token');
@@ -48,7 +49,7 @@ const BookClubShow = ({ props, match }) => {
             {isAdmin() ? <AdminOptions /> : <MemberOptions />}
             <img src={picture} alt="bookclub" />
             <p>{description}</p>
-            <PollShow />
+            {poll ? <PollShow /> : null}
          </div>
          <BookModal />
       </div>
