@@ -8,11 +8,12 @@ import MemberOptions from './MemberOptions';
 import BookModal from './BookModal';
 
 const BookClubShow = ({ props, match }) => {
-   const [bookclubs, setBookclubs] = useState('');
+   const bookclub = useSelector(state => state.bookclub.bookclub);
+   const [bookclubUsers, setBookclubUsers] = useState('');
    const [fetched, setFetched] = useState(false);
    const dispatch = useDispatch();
    const poll = useSelector(state => state.poll.poll);
-   const currentUser = useSelector(state => state.auth.user.id);
+   const currentUser = useSelector(state => state.auth.user);
    const history = useHistory();
    const token = localStorage.getItem('token');
 
@@ -20,7 +21,7 @@ const BookClubShow = ({ props, match }) => {
       fetch(`http://localhost:3000/api/v1/bookclubs/${match.params.id}`)
          .then(response => response.json())
          .then(data => {
-            setBookclubs(data);
+            setBookclubUsers(data);
             dispatch(currentPoll(data.poll[0]));
          })
          .finally(() => {
@@ -28,7 +29,7 @@ const BookClubShow = ({ props, match }) => {
          });
    }, [match.params.id]);
 
-   if (!token || !currentUser) {
+   if (!token || !currentUser.id) {
       history.push('/login');
    }
 
@@ -37,10 +38,25 @@ const BookClubShow = ({ props, match }) => {
    }
 
    const isAdmin = () => {
-      return bookclubs.bookclub.bookclub_users[0].is_admin === currentUser;
+      console.log(bookclubUsers);
+      return (
+         bookclubUsers.bookclub.bookclub_users[0].is_admin === currentUser.id
+      );
    };
 
-   const { name, description, picture } = bookclubs.bookclub;
+   const isMember = () => {
+      let temp = bookclub.users.filter(user => {
+         return user.id === currentUser.id;
+      });
+      console.log(temp);
+      if (temp.length > 0) {
+         return true;
+      }
+      return false;
+   };
+
+   console.log(bookclub);
+   const { name, description, picture } = bookclub;
 
    return (
       <div>
@@ -49,7 +65,7 @@ const BookClubShow = ({ props, match }) => {
             {isAdmin() ? <AdminOptions /> : <MemberOptions />}
             <img src={picture} alt="bookclub" />
             <p>{description}</p>
-            {poll ? <PollShow /> : null}
+            {poll && isMember() ? <PollShow /> : null}
          </div>
          <BookModal />
       </div>
