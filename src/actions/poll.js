@@ -11,3 +11,10 @@ export const CREATE_OPTION = option => {
       option,
    };
 };
+
+export const CURRENT_POLL = poll => {
+   return {
+      type: 'CURRENT_POLL',
+      poll,
+   };
+};

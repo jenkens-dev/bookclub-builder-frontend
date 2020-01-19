@@ -28,7 +28,6 @@ const EditBookClub = () => {
    const upload = e => {
       S3FileUpload.uploadFile(e.target.files[0], config)
          .then(data => {
-            console.log(data.location);
             setPicture(data.location);
          })
          .catch(error => {

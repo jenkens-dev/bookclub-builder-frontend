@@ -21,8 +21,6 @@ const MyBookClubs = () => {
       return null;
    }
 
-   console.log(mybookclubs);
-
    return (
       <div>
          <div>MyBookClubs</div>

@@ -8,12 +8,15 @@ export default (state = { option: [] }, action) => {
             },
          };
       case 'CREATE_OPTION':
-         console.log(action);
          return {
             poll: {
                ...state.poll,
                option: [...state.poll.option, action.option],
             },
+         };
+      case 'CURRENT_POLL':
+         return {
+            poll: action.poll,
          };
       default:
          return state;

@@ -28,7 +28,6 @@ const CreatePoll = () => {
       })
          .then(response => response.json())
          .then(data => {
-            console.log(data);
             dispatch(createPoll(data));
             history.push(`/bookclubs/${bookclub.id}/${data.id}/options`);
          });

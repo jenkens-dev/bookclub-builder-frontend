@@ -27,7 +27,6 @@ const Login = props => {
          if (response.error) {
             console.log(response.error);
          } else {
-            console.log(response);
             dispatch(signIn(response));
             localStorage.setItem('token', response.jwt);
             props.history.push('/');

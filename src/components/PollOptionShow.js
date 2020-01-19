@@ -13,10 +13,8 @@ const PollOptionShow = props => {
    const bookclub = useSelector(state => state.bookclub.bookclub);
    const dispatch = useDispatch();
    const history = useHistory();
-   console.log(props);
 
    const handleClick = () => {
-      console.log(props.option);
       fetch(`http://localhost:3000/api/v1/polls/${poll.id}/options`, {
          method: 'POST',
          headers: {
@@ -31,7 +29,6 @@ const PollOptionShow = props => {
       })
          .then(response => response.json())
          .then(data => {
-            console.log(data);
             dispatch(createOption(props.option));
          });
    };
