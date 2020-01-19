@@ -50,7 +50,11 @@ const MemberOptions = () => {
             bookclub_id: bookclub.id,
             user_id: currentUser.id,
          }),
-      });
+      })
+         .then(response => response.json())
+         .then(data => {
+            console.log(data);
+         });
    };
 
    return (
