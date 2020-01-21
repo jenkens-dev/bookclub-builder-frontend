@@ -38,7 +38,6 @@ const BookClubShow = ({ props, match }) => {
    }
 
    const isAdmin = () => {
-      console.log(bookclubUsers);
       return (
          bookclubUsers.bookclub.bookclub_users[0].is_admin === currentUser.id
       );
@@ -48,14 +47,12 @@ const BookClubShow = ({ props, match }) => {
       let temp = bookclub.users.filter(user => {
          return user.id === currentUser.id;
       });
-      console.log(temp);
       if (temp.length > 0) {
          return true;
       }
       return false;
    };
 
-   console.log(bookclub);
    const { name, description, picture } = bookclub;
 
    return (
