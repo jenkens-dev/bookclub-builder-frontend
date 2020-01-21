@@ -11,11 +11,10 @@ const PollShow = () => {
       });
    };
 
-   console.log(poll);
    return (
       <div>
          <h1>{poll.name}</h1>
-         <div>{displayPollOptions()}</div>
+         {poll.poll_options.length > 0 && <div>{displayPollOptions()}</div>}
       </div>
    );
 };

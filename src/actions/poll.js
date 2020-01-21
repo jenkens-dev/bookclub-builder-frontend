@@ -18,3 +18,9 @@ export const CURRENT_POLL = poll => {
       poll,
    };
 };
+
+export const ARCHIVE_POLL = () => {
+   return {
+      type: 'ARCHIVE_POLL',
+   };
+};
