@@ -16,10 +16,13 @@ const BookClubCard = props => {
 
    const useStyles = makeStyles({
       card: {
-         maxWidth: 345,
+         minHeight: '100%',
+         minWidth: '30%',
+         maxWidth: '30%',
+         margin: 10,
       },
       media: {
-         height: 140,
+         height: 345,
          width: '100%',
          objectFit: 'cover',
       },
@@ -34,20 +37,19 @@ const BookClubCard = props => {
 
    return (
       <Card className={classes.card}>
-         <CardActionArea onClick={handleClick}>
+         <CardActionArea onClick={handleClick} minHeight={'100%'}>
             <CardMedia
                className={classes.media}
                component="img"
                alt={`${name} bookclub`}
-               height="140"
                image={picture}
                title={name}
             />
             <CardContent>
-               <Typography gutterBottom variant="h5" component="h2">
+               <Typography variant="h5" component="h2">
                   {name}
                </Typography>
-               <Typography variant="body2" color="textSecondary" component="p">
+               <Typography variant="body1" color="textSecondary" component="p">
                   {description}
                </Typography>
                <Typography variant="body2" color="textSecondary" component="p">
