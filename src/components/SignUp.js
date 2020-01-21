@@ -4,6 +4,10 @@ import { SIGN_IN as signIn } from '../actions/auth';
 import { useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import S3FileUpload from 'react-s3';
+import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { makeStyles } from '@material-ui/core/styles';
 
 const SignUp = props => {
    const [username, setUsername] = useState('');
@@ -18,6 +22,19 @@ const SignUp = props => {
       accessKeyId: process.env.REACT_APP_BOOKCLUB_ACCESS_KEY_ID,
       secretAccessKey: process.env.REACT_APP_BOOKCLUB_SECRET_ACCESS_KEY,
    };
+
+   const useStyles = makeStyles(theme => ({
+      root: {
+         '& > *': {
+            margin: theme.spacing(1),
+         },
+      },
+      input: {
+         display: 'none',
+      },
+   }));
+
+   const classes = useStyles();
 
    const handleUsernameChange = e => {
       setUsername(e.target.value);
@@ -51,39 +68,63 @@ const SignUp = props => {
    };
 
    return (
-      <div>
+      <Grid
+         container
+         direction="column"
+         justifyContent="center"
+         alignItems="center"
+         spacing={2}
+      >
          <h1>Sign Up</h1>
          <form onSubmit={handleSubmit}>
-            <label>
-               Username
-               <input
-                  type="text"
+            <Grid item xs={12}>
+               <TextField
+                  required
+                  id="username"
+                  label="Username"
                   value={username}
                   onChange={handleUsernameChange}
+                  variant="filled"
                />
-            </label>
-            <label>
-               Password
-               <input
+            </Grid>
+            <Grid item xs={12}>
+               <TextField
+                  required
                   type="password"
+                  id="password"
+                  label="Password"
                   value={password}
                   onChange={handlePasswordChange}
+                  variant="filled"
                />
-            </label>
-            <input
-               hidden
-               accept="image/*"
-               id="raised-button-file"
-               multiple
-               type="file"
-               onChange={upload}
-            />
-            <label htmlFor="raised-button-file">
-               <Button component="span">Upload</Button>
-            </label>
-            <input type="submit" />
+            </Grid>
+            <Grid item xs={12}>
+               <input
+                  className={classes.input}
+                  accept="image/*"
+                  id="contained-button-file"
+                  multiple
+                  type="file"
+                  onChange={upload}
+               />
+               <label htmlFor="contained-button-file">
+                  <Button
+                     variant="contained"
+                     color="primary"
+                     component="span"
+                     startIcon={<CloudUploadIcon />}
+                  >
+                     Upload
+                  </Button>
+               </label>
+            </Grid>
+            <Grid item xs={12}>
+               <Button type="submit" variant="contained" color="primary">
+                  Submit
+               </Button>
+            </Grid>
          </form>
-      </div>
+      </Grid>
    );
 };
 
