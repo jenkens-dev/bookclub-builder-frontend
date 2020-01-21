@@ -2,9 +2,8 @@ import React from 'react';
 import { api } from '../services/api';
 import BookClubCard from './BookClubCard';
 import { useHistory } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import { findByLabelText } from '@testing-library/react';
+
 
 const Home = () => {
    const [bookclubs, fetched] = api.useNetworkResource(
