@@ -31,6 +31,7 @@ const SignUp = props => {
       },
       input: {
          display: 'none',
+         margin: '5px',
       },
    }));
 
@@ -71,8 +72,9 @@ const SignUp = props => {
       <Grid
          container
          direction="column"
-         justifyContent="center"
+         justify="center"
          alignItems="center"
+         alignContent="center"
          spacing={2}
       >
          <h1>Sign Up</h1>
@@ -98,7 +100,7 @@ const SignUp = props => {
                   variant="filled"
                />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} style={{ marginTop: 10, marginBottom: 10 }}>
                <input
                   className={classes.input}
                   accept="image/*"
