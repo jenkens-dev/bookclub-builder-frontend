@@ -1,13 +1,23 @@
 import React from 'react';
+import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { CURRENT_POLL as currentPoll } from '../actions/poll';
 import { ARCHIVE_POLL as archivePoll } from '../actions/poll';
+import { makeStyles } from '@material-ui/core/styles';
 
 const AdminOptions = () => {
    const id = useSelector(state => state.bookclub.bookclub.id);
    const poll = useSelector(state => state.poll.poll);
    const dispatch = useDispatch();
+
+   const useStyles = makeStyles({
+      links: {
+         color: 'white',
+         textDecoration: 'none',
+      },
+   });
+
+   const classes = useStyles();
 
    const handleClick = () => {
       fetch(`http://localhost:3000/api/v1/polls/${poll.id}`, {
@@ -30,15 +40,26 @@ const AdminOptions = () => {
    return (
       <div>
          {!poll || poll.poll_options.length < 1 ? (
-            <Link to={`/bookclubs/${id}/poll`}>
-               <button>Create Poll</button>
+            <Link to={`/bookclubs/${id}/poll`} className={classes.links}>
+               <Button variant="contained" color="primary">
+                  Create Poll
+               </Button>
             </Link>
          ) : (
-            <button onClick={handleClick}>Archive Poll</button>
+            <Button
+               variant="contained"
+               color="primary"
+               onClick={handleClick}
+               className={classes.links}
+            >
+               Archive Poll
+            </Button>
          )}
 
-         <Link to={`/bookclubs/${id}/edit`}>
-            <button>Edit Bookclub</button>
+         <Link to={`/bookclubs/${id}/edit`} className={classes.links}>
+            <Button variant="contained" color="primary">
+               Edit Bookclub
+            </Button>
          </Link>
       </div>
    );
