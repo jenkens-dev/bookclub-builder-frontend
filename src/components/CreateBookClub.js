@@ -6,8 +6,7 @@ import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-
+import Box from '@material-ui/core/Box';
 
 const CreateBookClub = () => {
    const currentUserId = useSelector(state => state.auth.user.id);
@@ -26,6 +25,8 @@ const CreateBookClub = () => {
    const useStyles = makeStyles(theme => ({
       input: {
          display: 'none',
+      },
+      margin: {
          margin: '5px',
       },
       image: {
@@ -76,63 +77,79 @@ const CreateBookClub = () => {
    };
 
    return (
-      <Grid container direction="column" justify="center" alignItems="center">
-         <h1>Create Bookclub</h1>
-         <form onSubmit={handleSubmit}>
-            <Grid item xs={6}>
-               <TextField
-                  required
-                  id="name"
-                  label="Name"
-                  value={name}
-                  onChange={handleNameChange}
-                  variant="filled"
-               />
-            </Grid>
-            <Grid item xs={6}>
-               <TextField
-                  required
-                  id="description"
-                  label="Description"
-                  value={description}
-                  onChange={handleDescriptionChange}
-                  variant="filled"
-               />
-            </Grid>
-            <Grid item xs={12}>
-               <img
-                  src={picture}
-                  alt="bookclub"
-                  style={{ maxHeight: '100vh', maxWidth: '100vh' }}
-               />
-            </Grid>
-            <Grid item xs={12}>
-               <input
-                  className={classes.input}
-                  accept="image/*"
-                  id="contained-button-file"
-                  multiple
-                  type="file"
-                  onChange={upload}
-               />
-               <label htmlFor="contained-button-file">
-                  <Button
-                     variant="contained"
-                     color="primary"
-                     component="span"
-                     startIcon={<CloudUploadIcon />}
-                  >
-                     Upload
-                  </Button>
-               </label>
-            </Grid>
-            <Grid item xs={12}>
-               <Button type="submit" variant="contained" color="primary">
-                  Submit
-               </Button>
-            </Grid>
-         </form>
-      </Grid>
+      <div>
+         <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            marginTop="5px"
+         >
+            <h1>Create Bookclub</h1>
+            <form onSubmit={handleSubmit}>
+               <Box display="flex" justifyContent="center">
+                  <Box className={classes.margin}>
+                     <TextField
+                        required
+                        id="name"
+                        label="Name"
+                        value={name}
+                        onChange={handleNameChange}
+                        variant="filled"
+                     />
+                  </Box>
+                  <Box className={classes.margin}>
+                     <TextField
+                        required
+                        id="description"
+                        label="Description"
+                        value={description}
+                        onChange={handleDescriptionChange}
+                        variant="filled"
+                     />
+                  </Box>
+               </Box>
+               <Box
+                  display="flex"
+                  justifyContent="center"
+                  className={classes.margin}
+               >
+                  <img
+                     src={picture}
+                     alt="bookclub"
+                     style={{ maxHeight: '100vh', maxWidth: '100vh' }}
+                  />
+               </Box>
+               <Box display="flex" justifyContent="center">
+                  <Box className={classes.margin}>
+                     <input
+                        className={classes.input}
+                        accept="image/*"
+                        id="contained-button-file"
+                        multiple
+                        type="file"
+                        onChange={upload}
+                     />
+                     <label htmlFor="contained-button-file">
+                        <Button
+                           variant="contained"
+                           color="primary"
+                           component="span"
+                           startIcon={<CloudUploadIcon />}
+                        >
+                           Upload
+                        </Button>
+                     </label>
+                  </Box>
+                  <Box className={classes.margin}>
+                     <Button type="submit" variant="contained" color="primary">
+                        Submit
+                     </Button>
+                  </Box>
+               </Box>
+            </form>
+         </Box>
+      </div>
    );
 };
 
