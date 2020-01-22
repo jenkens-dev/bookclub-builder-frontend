@@ -74,7 +74,6 @@ const SignUp = props => {
          direction="column"
          justify="center"
          alignItems="center"
-         alignContent="center"
          spacing={2}
       >
          <h1>Sign Up</h1>
