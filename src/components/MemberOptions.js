@@ -10,9 +10,8 @@ const MemberOptions = () => {
    const dispatch = useDispatch();
 
    const useStyles = makeStyles({
-      links: {
-         color: 'white',
-         textDecoration: 'none',
+      btn: {
+         margin: 5,
       },
    });
 
@@ -71,11 +70,21 @@ const MemberOptions = () => {
    return (
       <div>
          {isMember() ? (
-            <Button variant="contained" color="primary" onClick={leaveBookClub}>
+            <Button
+               variant="contained"
+               color="primary"
+               onClick={leaveBookClub}
+               className={classes.btn}
+            >
                Leave Bookclub
             </Button>
          ) : (
-            <Button variant="contained" color="primary" onClick={joinBookClub}>
+            <Button
+               variant="contained"
+               color="primary"
+               onClick={joinBookClub}
+               className={classes.btn}
+            >
                Join Bookclub
             </Button>
          )}

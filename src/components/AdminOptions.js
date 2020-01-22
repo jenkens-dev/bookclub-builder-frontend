@@ -15,6 +15,9 @@ const AdminOptions = () => {
          color: 'white',
          textDecoration: 'none',
       },
+      btn: {
+         margin: 5,
+      },
    });
 
    const classes = useStyles();
@@ -41,12 +44,17 @@ const AdminOptions = () => {
       <div>
          {!poll || poll.poll_options.length < 1 ? (
             <Link to={`/bookclubs/${id}/poll`} className={classes.links}>
-               <Button variant="contained" color="primary">
+               <Button
+                  variant="contained"
+                  color="primary"
+                  className={classes.btn}
+               >
                   Create Poll
                </Button>
             </Link>
          ) : (
             <Button
+               className={classes.btn}
                variant="contained"
                color="primary"
                onClick={handleClick}
@@ -57,7 +65,7 @@ const AdminOptions = () => {
          )}
 
          <Link to={`/bookclubs/${id}/edit`} className={classes.links}>
-            <Button variant="contained" color="primary">
+            <Button variant="contained" color="primary" className={classes.btn}>
                Edit Bookclub
             </Button>
          </Link>

@@ -40,11 +40,11 @@ const PollVote = ({ option: { id, google_book_id, votes } }) => {
    }
 
    return (
-      <div>
+      <>
          <span onClick={handleBookState}>{bookInfo.volumeInfo.title}</span>
          <p>Votes: {votes}</p>
          <button onClick={handleVoteClick}>Vote</button>
-      </div>
+      </>
    );
 };
 

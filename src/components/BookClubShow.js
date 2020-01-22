@@ -23,12 +23,14 @@ const BookClubShow = ({ props, match }) => {
          display: 'flex',
          flexDirection: 'column',
          justifyContent: 'center',
-         alignContent: 'center',
+         alignItems: 'center',
          height: '100%',
+         marginLeft: 25,
+         marginRight: 25,
       },
       image: {
-         height: '30%',
-         width: '30%',
+         height: '40%',
+         width: '40%',
       },
    });
 
@@ -73,8 +75,8 @@ const BookClubShow = ({ props, match }) => {
    const { name, description, picture } = bookclub;
 
    return (
-      <div className={classes.root}>
-         <div>
+      <div>
+         <div className={classes.root}>
             <h1>{name}</h1>
             {isAdmin() ? <AdminOptions /> : <MemberOptions />}
             <img src={picture} alt="bookclub" className={classes.image} />
