@@ -4,6 +4,8 @@ import { useDispatch } from 'react-redux';
 import { CURRENT_BOOK as currentBook } from '../actions/book';
 import { TOGGLE_MODAL_STATUS as toggleModalStatus } from '../actions/modal';
 import { CURRENT_POLL as currentPoll } from '../actions/poll';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 
 const PollVote = ({ option: { id, google_book_id, votes } }) => {
    const [bookInfo, fetched] = api.useNetworkResource(
@@ -40,11 +42,29 @@ const PollVote = ({ option: { id, google_book_id, votes } }) => {
    }
 
    return (
-      <>
-         <span onClick={handleBookState}>{bookInfo.volumeInfo.title}</span>
-         <p>Votes: {votes}</p>
-         <button onClick={handleVoteClick}>Vote</button>
-      </>
+      <Grid
+         container
+         direction="row"
+         justify="center"
+         alignItems="center"
+         spacing={3}
+      >
+         <Grid item>
+            <span onClick={handleBookState}>{bookInfo.volumeInfo.title}</span>
+         </Grid>
+         <Grid item>
+            <p>Votes: {votes}</p>
+         </Grid>
+         <Grid item>
+            <Button
+               onClick={handleVoteClick}
+               variant="contained"
+               color="primary"
+            >
+               Vote
+            </Button>
+         </Grid>
+      </Grid>
    );
 };
 
