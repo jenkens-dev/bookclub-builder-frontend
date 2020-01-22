@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import PollOptionShow from './PollOptionShow';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import SearchIcon from '@material-ui/icons/Search';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import Box from '@material-ui/core/Box';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 
 const PollOptions = () => {
    const poll = useSelector(state => state.poll.poll);
@@ -9,6 +17,7 @@ const PollOptions = () => {
    const [search, setSearch] = useState('');
 
    const handleSubmit = event => {
+      console.log('submitting');
       event.preventDefault();
       fetch(
          `https://www.googleapis.com/books/v1/volumes?q=${select}:${search}&maxResults=6&key=AIzaSyA39gVxErny8CXc27ySrZefMllAWF_det4`,
@@ -29,22 +38,57 @@ const PollOptions = () => {
 
    return (
       <div>
-         <h1>{poll.name}</h1>
-         <form onSubmit={handleSubmit}>
-            <label>
-               Search
-               <input
-                  type="text"
-                  value={search}
-                  onChange={handleSearchChange}
-               />
-               <select onChange={handleSelectChange}>
-                  <option value="inauthor">Author</option>
-                  <option value="intitle">Title</option>
-               </select>
-               <input type="submit" />
-            </label>
-         </form>
+         <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+         >
+            <h1>{poll.name}</h1>
+            <form onSubmit={handleSubmit}>
+               <Box>
+                  <TextField
+                     id="search"
+                     label="Search"
+                     value={search}
+                     onChange={handleSearchChange}
+                     InputProps={{
+                        startAdornment: (
+                           <InputAdornment position="start">
+                              <SearchIcon />
+                           </InputAdornment>
+                        ),
+                     }}
+                  />
+               </Box>
+               <Box>
+                  <FormControl variant="filled" style={{ width: '100%' }}>
+                     <Select
+                        labelId="Search"
+                        id="search"
+                        onChange={handleSelectChange}
+                        autoWidth={true}
+                     >
+                        <MenuItem value="">
+                           <em>None</em>
+                        </MenuItem>
+                        <MenuItem value="inauthor">Author</MenuItem>
+                        <MenuItem value="intitle">Title</MenuItem>
+                     </Select>
+                  </FormControl>
+               </Box>
+               <Box>
+                  <Button
+                     type="submit"
+                     variant="contained"
+                     color="primary"
+                     style={{ marginTop: '5px' }}
+                  >
+                     Submit
+                  </Button>
+               </Box>
+            </form>
+         </Box>
          {options.map(option => (
             <PollOptionShow key={option.id} option={option} />
          ))}

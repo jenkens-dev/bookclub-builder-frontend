@@ -40,7 +40,7 @@ const PollOptionShow = props => {
                component="img"
                alt={`${props.option.volumeInfo.title} book`}
                height="140"
-               image={props.option.volumeInfo.imageLinks.smallThumbnail}
+               image={props.option.volumeInfo.imageLinks.thumbnail}
                title={props.option.volumeInfo.title}
             />
             <CardContent>
