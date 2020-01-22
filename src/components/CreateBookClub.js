@@ -8,6 +8,7 @@ import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
+
 const CreateBookClub = () => {
    const currentUserId = useSelector(state => state.auth.user.id);
    const history = useHistory();
@@ -78,7 +79,7 @@ const CreateBookClub = () => {
       <Grid container direction="column" justify="center" alignItems="center">
          <h1>Create Bookclub</h1>
          <form onSubmit={handleSubmit}>
-            <Grid item xs={12}>
+            <Grid item xs={6}>
                <TextField
                   required
                   id="name"
@@ -88,7 +89,7 @@ const CreateBookClub = () => {
                   variant="filled"
                />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={6}>
                <TextField
                   required
                   id="description"

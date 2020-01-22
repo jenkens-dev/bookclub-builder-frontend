@@ -3,6 +3,10 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import S3FileUpload from 'react-s3';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
+import TextField from '@material-ui/core/TextField';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import { makeStyles } from '@material-ui/core/styles';
 
 const EditBookClub = () => {
    const bookclubId = useSelector(state => state.bookclub.bookclub.id);
@@ -17,6 +21,21 @@ const EditBookClub = () => {
    const [description, setDescription] = useState(
       useSelector(state => state.bookclub.bookclub.description),
    );
+
+   const useStyles = makeStyles(theme => ({
+      input: {
+         display: 'none',
+      },
+      margin: {
+         margin: '5px',
+      },
+      image: {
+         height: '50%',
+         width: '50%',
+      },
+   }));
+
+   const classes = useStyles();
 
    const config = {
       bucketName: 'bookclub-photos',
@@ -67,33 +86,72 @@ const EditBookClub = () => {
 
    return (
       <div>
-         <form onSubmit={handleSubmit}>
-            <label>
-               Name
-               <input type="text" value={name} onChange={handleNameChange} />
-            </label>
-            <label>
-               Description
-               <input
-                  type="text"
-                  value={description}
-                  onChange={handleDescriptionChange}
-               />
-            </label>
-            <img src={picture} alt="bookclub" />
-            <input
-               hidden
-               accept="image/*"
-               id="raised-button-file"
-               multiple
-               type="file"
-               onChange={upload}
-            />
-            <label htmlFor="raised-button-file">
-               <Button component="span">Upload</Button>
-            </label>
-            <input type="submit" />
-         </form>
+         <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+            marginTop="5px"
+         >
+            <form onSubmit={handleSubmit}>
+               <Box display="flex" justifyContent="center">
+                  <Box className={classes.margin}>
+                     <TextField
+                        required
+                        id="name"
+                        label="Name"
+                        value={name}
+                        onChange={handleNameChange}
+                        variant="filled"
+                     />
+                  </Box>
+                  <Box className={classes.margin}>
+                     <TextField
+                        required
+                        id="description"
+                        label="Description"
+                        value={description}
+                        onChange={handleDescriptionChange}
+                        variant="filled"
+                     />
+                  </Box>
+               </Box>
+               <Box display="flex" justifyContent="center">
+                  <img
+                     src={picture}
+                     alt="bookclub"
+                     style={{ maxHeight: '100vh', maxWidth: '100vh' }}
+                  />
+               </Box>
+               <Box display="flex" justifyContent="center">
+                  <Box className={classes.margin}>
+                     <input
+                        className={classes.input}
+                        accept="image/*"
+                        id="contained-button-file"
+                        multiple
+                        type="file"
+                        onChange={upload}
+                     />
+                     <label htmlFor="contained-button-file">
+                        <Button
+                           variant="contained"
+                           color="primary"
+                           component="span"
+                           startIcon={<CloudUploadIcon />}
+                        >
+                           Upload
+                        </Button>
+                     </label>
+                  </Box>
+                  <Box className={classes.margin}>
+                     <Button type="submit" variant="contained" color="primary">
+                        Submit
+                     </Button>
+                  </Box>
+               </Box>
+            </form>
+         </Box>
       </div>
    );
 };
