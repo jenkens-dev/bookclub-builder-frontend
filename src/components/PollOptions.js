@@ -9,12 +9,35 @@ import Box from '@material-ui/core/Box';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
+import { makeStyles } from '@material-ui/core/styles';
 
 const PollOptions = () => {
    const poll = useSelector(state => state.poll.poll);
    const [options, setOptions] = useState([]);
    const [select, setSelect] = useState('inauthor');
    const [search, setSearch] = useState('');
+
+   const useStyles = makeStyles({
+      root: {
+         display: 'flex',
+         flexWrap: 'wrap',
+         justifyContent: 'center',
+         alignContent: 'center',
+         height: '100%',
+      },
+      card: {
+         minWidth: '30%',
+         maxWidth: '30%',
+         margin: 10,
+      },
+      media: {
+         height: 345,
+         width: '100%',
+         objectFit: 'cover',
+      },
+   });
+
+   const classes = useStyles();
 
    const handleSubmit = event => {
       console.log('submitting');
@@ -89,9 +112,11 @@ const PollOptions = () => {
                </Box>
             </form>
          </Box>
-         {options.map(option => (
-            <PollOptionShow key={option.id} option={option} />
-         ))}
+         <div className={classes.root}>
+            {options.map(option => (
+               <PollOptionShow key={option.id} option={option} />
+            ))}
+         </div>
       </div>
    );
 };

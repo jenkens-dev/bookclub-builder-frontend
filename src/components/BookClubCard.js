@@ -16,7 +16,6 @@ const BookClubCard = props => {
 
    const useStyles = makeStyles({
       card: {
-         minHeight: '100%',
          minWidth: '30%',
          maxWidth: '30%',
          margin: 10,
@@ -37,7 +36,7 @@ const BookClubCard = props => {
 
    return (
       <Card className={classes.card}>
-         <CardActionArea onClick={handleClick} minHeight={'100%'}>
+         <CardActionArea onClick={handleClick}>
             <CardMedia
                className={classes.media}
                component="img"

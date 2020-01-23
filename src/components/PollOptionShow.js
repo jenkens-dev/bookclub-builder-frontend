@@ -4,6 +4,7 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_OPTION as createOption } from '../actions/poll';
@@ -13,6 +14,21 @@ const PollOptionShow = props => {
    const bookclub = useSelector(state => state.bookclub.bookclub);
    const dispatch = useDispatch();
    const history = useHistory();
+
+   const useStyles = makeStyles({
+      card: {
+         minWidth: '30%',
+         maxWidth: '30%',
+         margin: 10,
+      },
+      media: {
+         height: 345,
+         width: '100%',
+         objectFit: 'cover',
+      },
+   });
+
+   const classes = useStyles();
 
    const handleClick = () => {
       fetch(`http://localhost:3000/api/v1/polls/${poll.id}/options`, {
@@ -34,9 +50,10 @@ const PollOptionShow = props => {
    };
 
    return (
-      <Card>
+      <Card className={classes.card}>
          <CardActionArea onClick={handleClick}>
             <CardMedia
+               className={classes.media}
                component="img"
                alt={`${props.option.volumeInfo.title} book`}
                height="140"
