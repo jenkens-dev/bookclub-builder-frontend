@@ -10,6 +10,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
+import { ToastContainer, toast } from 'react-toastify';
 
 const PollOptions = () => {
    const poll = useSelector(state => state.poll.poll);
@@ -48,6 +49,7 @@ const PollOptions = () => {
          .then(response => response.json())
          .then(data => {
             setOptions(data.items);
+            console.log(data.items);
          });
    };
 
@@ -57,6 +59,10 @@ const PollOptions = () => {
 
    const handleSelectChange = event => {
       setSelect(event.target.value);
+   };
+
+   const notify = bookTitle => {
+      toast(bookTitle);
    };
 
    return (
@@ -112,9 +118,15 @@ const PollOptions = () => {
                </Box>
             </form>
          </Box>
+         <ToastContainer />
          <div className={classes.root}>
             {options.map(option => (
-               <PollOptionShow key={option.id} option={option} />
+               <PollOptionShow
+                  key={option.id}
+                  option={option}
+                  searchId={option.id}
+                  notify={notify}
+               />
             ))}
          </div>
       </div>
