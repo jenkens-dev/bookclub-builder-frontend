@@ -44,7 +44,6 @@ const PollOptions = () => {
    const classes = useStyles();
 
    const handleSubmit = event => {
-      console.log('submitting');
       event.preventDefault();
       fetch(
          `https://www.googleapis.com/books/v1/volumes?q=${select}:${search}&maxResults=6&key=AIzaSyA39gVxErny8CXc27ySrZefMllAWF_det4`,
@@ -52,7 +51,6 @@ const PollOptions = () => {
          .then(response => response.json())
          .then(data => {
             setOptions(data.items);
-            console.log(data.items);
          });
    };
 

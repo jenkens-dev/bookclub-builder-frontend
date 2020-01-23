@@ -46,7 +46,6 @@ const PollVote = ({ option: { id, google_book_id, votes } }) => {
       })
          .then(response => response.json())
          .then(data => {
-            console.log(data);
             dispatch(currentPoll(data));
          });
    };

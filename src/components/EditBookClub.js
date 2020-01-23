@@ -79,7 +79,6 @@ const EditBookClub = () => {
          .then(response => response.json())
          .then(data => {
             //need to update redux store but data is undefined for some reason
-            console.log(data);
             history.push(`/bookclubs/${bookclubId}`);
          });
    };

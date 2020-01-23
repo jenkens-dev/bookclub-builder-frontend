@@ -3,7 +3,7 @@ import Modal from '@material-ui/core/Modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { TOGGLE_MODAL_STATUS as toggleModalStatus } from '../actions/modal';
 import { makeStyles } from '@material-ui/core/styles';
-import Interweave, { Markup } from 'interweave';
+import Interweave from 'interweave';
 
 const BookModal = () => {
    function getModalStyle() {
@@ -22,7 +22,6 @@ const BookModal = () => {
          overflow: 'scroll',
          height: '100%',
          display: 'block',
-         position: 'absolute',
          width: 400,
          backgroundColor: theme.palette.background.paper,
          border: '2px solid #000',

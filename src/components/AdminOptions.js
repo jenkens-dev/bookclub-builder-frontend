@@ -11,12 +11,10 @@ const AdminOptions = () => {
    const dispatch = useDispatch();
 
    const useStyles = makeStyles({
-      links: {
-         color: 'white',
-         textDecoration: 'none',
-      },
       btn: {
          margin: 5,
+         color: 'white',
+         textDecoration: 'none',
       },
    });
 
@@ -39,11 +37,11 @@ const AdminOptions = () => {
          });
    };
 
-   console.log(poll);
+
    return (
       <div>
          {!poll || poll.poll_options.length < 1 ? (
-            <Link to={`/bookclubs/${id}/poll`} className={classes.links}>
+            <Link to={`/bookclubs/${id}/poll`} className={classes.btn}>
                <Button
                   variant="contained"
                   color="primary"
@@ -58,13 +56,12 @@ const AdminOptions = () => {
                variant="contained"
                color="primary"
                onClick={handleClick}
-               className={classes.links}
             >
                Archive Poll
             </Button>
          )}
 
-         <Link to={`/bookclubs/${id}/edit`} className={classes.links}>
+         <Link to={`/bookclubs/${id}/edit`} className={classes.btn}>
             <Button variant="contained" color="primary" className={classes.btn}>
                Edit Bookclub
             </Button>

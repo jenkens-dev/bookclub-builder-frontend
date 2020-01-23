@@ -7,13 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_OPTION as createOption } from '../actions/poll';
-import { api } from '../services/api';
+
 
 const PollOptionShow = props => {
-   // const [book, fetched] = api.useNetworkResource(
-   //    `https://www.googleapis.com/books/v1/volumes/${props.searchId}`,
-   // );
-
    const poll = useSelector(state => state.poll.poll);
    const dispatch = useDispatch();
 
@@ -57,11 +53,6 @@ const PollOptionShow = props => {
          });
    };
 
-   // if (!fetched) {
-   //    return null;
-   // }
-
-   // console.log(book);
    return (
       <Card className={classes.card}>
          <CardActionArea onClick={handleClick} className={classes.action}>
