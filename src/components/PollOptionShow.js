@@ -28,6 +28,11 @@ const PollOptionShow = props => {
          width: '100%',
          objectFit: 'cover',
       },
+      action: {
+         '&:hover': {
+            background: 'red',
+         },
+      },
    });
 
    const classes = useStyles();
@@ -59,7 +64,7 @@ const PollOptionShow = props => {
    // console.log(book);
    return (
       <Card className={classes.card}>
-         <CardActionArea onClick={handleClick}>
+         <CardActionArea onClick={handleClick} className={classes.action}>
             <CardMedia
                className={classes.media}
                component="img"
