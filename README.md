@@ -1,7 +1,5 @@
 # Bookclub Builder - Frontend
 
-Frontend
-
 ## Motivation
 
 Bookclub Builder's goal is to encourage people to read more and unite book lovers. I wanted a simple website that allowed me to create a bookclub and decide on which books to read through poll. [This](https://github.com/Taljjaa/bookclub-builder-backend) is a link to the backend repository
