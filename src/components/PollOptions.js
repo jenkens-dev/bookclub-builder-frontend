@@ -80,6 +80,7 @@ const PollOptions = () => {
             <form onSubmit={handleSubmit}>
                <Box>
                   <TextField
+                     autoComplete="off"
                      id="search"
                      label="Search"
                      value={search}

@@ -48,6 +48,7 @@ const CreatePoll = () => {
             <form onSubmit={handleSubmit}>
                <Box>
                   <TextField
+                     autoComplete="off"
                      required
                      id="title"
                      label="Title"
