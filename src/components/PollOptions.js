@@ -10,7 +10,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, toast, Slide } from 'react-toastify';
+// import { Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.minimal.css';
+import '../toast.css';
 
 const PollOptions = () => {
    const poll = useSelector(state => state.poll.poll);
@@ -62,7 +65,7 @@ const PollOptions = () => {
    };
 
    const notify = bookTitle => {
-      toast(bookTitle);
+      toast.success(`Added ${bookTitle} to poll options`);
    };
 
    return (
@@ -118,7 +121,7 @@ const PollOptions = () => {
                </Box>
             </form>
          </Box>
-         <ToastContainer />
+         <ToastContainer autoClose={8000} transition={Slide} />
          <div className={classes.root}>
             {options.map(option => (
                <PollOptionShow
