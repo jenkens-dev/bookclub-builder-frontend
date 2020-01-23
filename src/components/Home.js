@@ -3,7 +3,7 @@ import { api } from '../services/api';
 import BookClubCard from './BookClubCard';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
-
+import logo from '../logo.png';
 
 const Home = () => {
    const [bookclubs, fetched] = api.useNetworkResource(
@@ -35,8 +35,8 @@ const Home = () => {
    }
 
    return (
-      <div>
-         <h1>BookClub Builder</h1>
+      <div className={classes.root}>
+         <img src={logo} />
          <div className={classes.root}>
             {bookclubs.map(bookclub => (
                <BookClubCard key={bookclub.id} bookclub={bookclub} />
