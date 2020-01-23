@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import S3FileUpload from 'react-s3';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import TextField from '@material-ui/core/TextField';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import { makeStyles } from '@material-ui/core/styles';
+import { CURRENT_BOOKCLUB as currentBookclub } from '../actions/bookclub';
 
 const EditBookClub = () => {
    const bookclubId = useSelector(state => state.bookclub.bookclub.id);
    const history = useHistory();
+   const dispatch = useDispatch();
 
    const [picture, setPicture] = useState(
       useSelector(state => state.bookclub.bookclub.picture),
@@ -78,6 +80,8 @@ const EditBookClub = () => {
       })
          .then(response => response.json())
          .then(data => {
+            console.log(data);
+            dispatch(currentBookclub(data));
             //need to update redux store but data is undefined for some reason
             history.push(`/bookclubs/${bookclubId}`);
          });

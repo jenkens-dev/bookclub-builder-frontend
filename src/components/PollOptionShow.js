@@ -8,7 +8,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_OPTION as createOption } from '../actions/poll';
 
-
 const PollOptionShow = props => {
    const poll = useSelector(state => state.poll.poll);
    const dispatch = useDispatch();
@@ -23,11 +22,6 @@ const PollOptionShow = props => {
          height: 345,
          width: '100%',
          objectFit: 'cover',
-      },
-      action: {
-         '&:hover': {
-            background: 'red',
-         },
       },
    });
 
