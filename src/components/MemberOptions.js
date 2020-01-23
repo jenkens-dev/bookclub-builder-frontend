@@ -1,11 +1,21 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { UPDATE_USER as updateUser } from '../actions/bookclub';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
 
 const MemberOptions = () => {
    const bookclub = useSelector(state => state.bookclub.bookclub);
    const currentUser = useSelector(state => state.auth.user);
    const dispatch = useDispatch();
+
+   const useStyles = makeStyles({
+      btn: {
+         margin: 5,
+      },
+   });
+
+   const classes = useStyles();
 
    const isMember = () => {
       let temp = bookclub.users.filter(user => {
@@ -60,9 +70,23 @@ const MemberOptions = () => {
    return (
       <div>
          {isMember() ? (
-            <button onClick={leaveBookClub}>Leave Bookclub</button>
+            <Button
+               variant="contained"
+               color="primary"
+               onClick={leaveBookClub}
+               className={classes.btn}
+            >
+               Leave Bookclub
+            </Button>
          ) : (
-            <button onClick={joinBookClub}>Join Bookclub</button>
+            <Button
+               variant="contained"
+               color="primary"
+               onClick={joinBookClub}
+               className={classes.btn}
+            >
+               Join Bookclub
+            </Button>
          )}
       </div>
    );

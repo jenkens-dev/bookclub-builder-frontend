@@ -6,6 +6,7 @@ import PollShow from './PollShow';
 import AdminOptions from './AdminOptions';
 import MemberOptions from './MemberOptions';
 import BookModal from './BookModal';
+import { makeStyles } from '@material-ui/core/styles';
 
 const BookClubShow = ({ props, match }) => {
    const bookclub = useSelector(state => state.bookclub.bookclub);
@@ -16,6 +17,24 @@ const BookClubShow = ({ props, match }) => {
    const currentUser = useSelector(state => state.auth.user);
    const history = useHistory();
    const token = localStorage.getItem('token');
+
+   const useStyles = makeStyles({
+      root: {
+         display: 'flex',
+         flexDirection: 'column',
+         justifyContent: 'center',
+         alignItems: 'center',
+         height: '100%',
+         marginLeft: 25,
+         marginRight: 25,
+      },
+      image: {
+         height: '40%',
+         width: '40%',
+      },
+   });
+
+   const classes = useStyles();
 
    useEffect(() => {
       fetch(`http://localhost:3000/api/v1/bookclubs/${match.params.id}`)
@@ -57,10 +76,10 @@ const BookClubShow = ({ props, match }) => {
 
    return (
       <div>
-         <div>
+         <div className={classes.root}>
             <h1>{name}</h1>
             {isAdmin() ? <AdminOptions /> : <MemberOptions />}
-            <img src={picture} alt="bookclub" />
+            <img src={picture} alt="bookclub" className={classes.image} />
             <p>{description}</p>
             {poll && isMember() ? <PollShow /> : null}
          </div>

@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { CREATE_POLL as createPoll } from '../actions/poll';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
 const CreatePoll = () => {
    const bookclub = useSelector(state => state.bookclub.bookclub);
@@ -35,14 +38,32 @@ const CreatePoll = () => {
 
    return (
       <div>
-         <div>Create Poll for {bookclub.name}</div>
-         <form onSubmit={handleSubmit}>
-            <label>
-               Title
-               <input type="text" value={title} onChange={handleChange} />
-               <input type="submit" />
-            </label>
-         </form>
+         <Box
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+         >
+            <h1>Create Poll for {bookclub.name}</h1>
+            <form onSubmit={handleSubmit}>
+               <Box>
+                  <TextField
+                     required
+                     id="title"
+                     label="Title"
+                     value={title}
+                     onChange={handleChange}
+                     variant="filled"
+                     style={{ marginTop: '5px', marginBottom: '5px' }}
+                  />
+               </Box>
+               <Box>
+                  <Button type="submit" variant="contained" color="primary">
+                     Submit
+                  </Button>
+               </Box>
+            </form>
+         </Box>
       </div>
    );
 };
