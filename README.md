@@ -11,6 +11,7 @@ Bookclub Builder's goal is to encourage people to read more and unite book lover
 -  React (with Hooks!)
 -  Redux
 -  Material UI
+-  AWS S3 image hosting
 -  Google Books API
 -  [React-Toastify](https://www.npmjs.com/package/react-toastify)
 
