@@ -5,15 +5,17 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
-import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { CREATE_OPTION as createOption } from '../actions/poll';
+import { api } from '../services/api';
 
 const PollOptionShow = props => {
+   // const [book, fetched] = api.useNetworkResource(
+   //    `https://www.googleapis.com/books/v1/volumes/${props.searchId}`,
+   // );
+
    const poll = useSelector(state => state.poll.poll);
-   const bookclub = useSelector(state => state.bookclub.bookclub);
    const dispatch = useDispatch();
-   const history = useHistory();
 
    const useStyles = makeStyles({
       card: {
@@ -25,6 +27,11 @@ const PollOptionShow = props => {
          height: 345,
          width: '100%',
          objectFit: 'cover',
+      },
+      action: {
+         '&:hover': {
+            background: 'red',
+         },
       },
    });
 
@@ -46,18 +53,24 @@ const PollOptionShow = props => {
          .then(response => response.json())
          .then(data => {
             dispatch(createOption(props.option));
+            props.notify(`${props.option.volumeInfo.title}`);
          });
    };
 
+   // if (!fetched) {
+   //    return null;
+   // }
+
+   // console.log(book);
    return (
       <Card className={classes.card}>
-         <CardActionArea onClick={handleClick}>
+         <CardActionArea onClick={handleClick} className={classes.action}>
             <CardMedia
                className={classes.media}
                component="img"
                alt={`${props.option.volumeInfo.title} book`}
                height="140"
-               image={props.option.volumeInfo.imageLinks.thumbnail}
+               image={props.option.volumeInfo.imageLinks.smallThumbnail}
                title={props.option.volumeInfo.title}
             />
             <CardContent>

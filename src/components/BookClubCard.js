@@ -19,11 +19,15 @@ const BookClubCard = props => {
          minWidth: '30%',
          maxWidth: '30%',
          margin: 10,
+         '&:hover': {},
       },
       media: {
          height: 345,
          width: '100%',
          objectFit: 'cover',
+      },
+      action: {
+         '&:hover': {},
       },
    });
 
@@ -36,7 +40,7 @@ const BookClubCard = props => {
 
    return (
       <Card className={classes.card}>
-         <CardActionArea onClick={handleClick}>
+         <CardActionArea onClick={handleClick} className={classes.action}>
             <CardMedia
                className={classes.media}
                component="img"
