@@ -41,7 +41,7 @@ const BookClubShow = ({ props, match }) => {
    const classes = useStyles();
 
    useEffect(() => {
-      fetch(`http://localhost:3000/api/v1/bookclubs/${match.params.id}`)
+      fetch(`/api/v1/bookclubs/${match.params.id}`)
          .then(response => response.json())
          .then(data => {
             setBookclubUsers(data);

@@ -18,7 +18,7 @@ const CreatePoll = () => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      fetch(`http://localhost:3000/api/v1/polls`, {
+      fetch(`/api/v1/polls`, {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',

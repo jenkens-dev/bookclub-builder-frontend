@@ -7,7 +7,7 @@ import logo from '../logo.png';
 
 const Home = () => {
    const [bookclubs, fetched] = api.useNetworkResource(
-      'http://localhost:3000/api/v1/bookclubs',
+      '/api/v1/bookclubs',
    );
 
    const history = useHistory();

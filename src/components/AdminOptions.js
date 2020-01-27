@@ -21,7 +21,7 @@ const AdminOptions = () => {
    const classes = useStyles();
 
    const handleClick = () => {
-      fetch(`http://localhost:3000/api/v1/polls/${poll.id}`, {
+      fetch(`/api/v1/polls/${poll.id}`, {
          method: 'PATCH',
          headers: {
             'Content-Type': 'application/json',
@@ -36,7 +36,6 @@ const AdminOptions = () => {
             dispatch(archivePoll(data));
          });
    };
-
 
    return (
       <div>

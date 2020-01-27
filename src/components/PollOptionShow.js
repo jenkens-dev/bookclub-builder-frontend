@@ -28,7 +28,7 @@ const PollOptionShow = props => {
    const classes = useStyles();
 
    const handleClick = () => {
-      fetch(`http://localhost:3000/api/v1/polls/${poll.id}/options`, {
+      fetch(`/api/v1/polls/${poll.id}/options`, {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',

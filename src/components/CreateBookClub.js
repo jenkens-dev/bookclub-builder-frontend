@@ -57,7 +57,7 @@ const CreateBookClub = () => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      fetch(`http://localhost:3000/api/v1/bookclubs`, {
+      fetch(`/api/v1/bookclubs`, {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',

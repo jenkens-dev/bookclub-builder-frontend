@@ -66,7 +66,7 @@ const EditBookClub = () => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      fetch(`http://localhost:3000/api/v1/bookclubs/${bookclubId}`, {
+      fetch(`/api/v1/bookclubs/${bookclubId}`, {
          method: 'PATCH',
          headers: {
             'Content-Type': 'application/json',
