@@ -22,8 +22,7 @@ const AdminOptions = () => {
 
    const handleClick = () => {
       fetch(
-         `https://bookclub-builder-server.herokuapp.com/
-      api/v1/polls/${poll.id}`,
+         `https://bookclub-builder-server.herokuapp.com/api/v1/polls/${poll.id}`,
          {
             method: 'PATCH',
             headers: {

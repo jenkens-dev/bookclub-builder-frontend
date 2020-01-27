@@ -58,8 +58,7 @@ const CreateBookClub = () => {
    const handleSubmit = event => {
       event.preventDefault();
       fetch(
-         `https://bookclub-builder-server.herokuapp.com/
-      api/v1/bookclubs`,
+         `https://bookclub-builder-server.herokuapp.com/api/v1/bookclubs`,
          {
             method: 'POST',
             headers: {

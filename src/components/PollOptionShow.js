@@ -28,8 +28,7 @@ const PollOptionShow = props => {
    const classes = useStyles();
 
    const handleClick = () => {
-      fetch(`https://bookclub-builder-server.herokuapp.com/
-      api/v1/polls/${poll.id}/options`, {
+      fetch(`https://bookclub-builder-server.herokuapp.com/api/v1/polls/${poll.id}/options`, {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',

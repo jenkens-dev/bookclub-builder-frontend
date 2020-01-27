@@ -31,8 +31,7 @@ const MemberOptions = () => {
       let index = bookclub.users.findIndex(user => user.id === currentUser.id);
       bookclub.users.splice(index, 1);
       fetch(
-         `https://bookclub-builder-server.herokuapp.com/
-      /api/v1/bookclub_users/id`,
+         `https://bookclub-builder-server.herokuapp.com/api/v1/bookclub_users/id`,
          {
             method: 'DELETE',
             headers: {
@@ -55,8 +54,7 @@ const MemberOptions = () => {
       bookclub.users.push(currentUser);
       dispatch(updateUser(bookclub.users));
       fetch(
-         `https://bookclub-builder-server.herokuapp.com/
-      api/v1/bookclub_users`,
+         `https://bookclub-builder-server.herokuapp.com/api/v1/bookclub_users`,
          {
             method: 'POST',
             headers: {

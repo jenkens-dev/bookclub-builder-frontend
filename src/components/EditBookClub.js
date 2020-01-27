@@ -67,8 +67,7 @@ const EditBookClub = () => {
    const handleSubmit = event => {
       event.preventDefault();
       fetch(
-         `https://bookclub-builder-server.herokuapp.com/
-      api/v1/bookclubs/${bookclubId}`,
+         `https://bookclub-builder-server.herokuapp.com/api/v1/bookclubs/${bookclubId}`,
          {
             method: 'PATCH',
             headers: {

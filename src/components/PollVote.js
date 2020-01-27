@@ -34,8 +34,7 @@ const PollVote = ({ option: { id, google_book_id, votes } }) => {
 
    const handleVoteClick = () => {
       let increasedVote = votes + 1;
-      fetch(`https://bookclub-builder-server.herokuapp.com/
-      api/v1/poll_options/${id}`, {
+      fetch(`https://bookclub-builder-server.herokuapp.com/api/v1/poll_options/${id}`, {
          method: 'PATCH',
          headers: {
             'Content-Type': 'application/json',

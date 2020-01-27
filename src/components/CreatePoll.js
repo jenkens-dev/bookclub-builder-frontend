@@ -19,8 +19,7 @@ const CreatePoll = () => {
    const handleSubmit = event => {
       event.preventDefault();
       fetch(
-         `https://bookclub-builder-server.herokuapp.com/
-      api/v1/polls`,
+         `https://bookclub-builder-server.herokuapp.com/api/v1/polls`,
          {
             method: 'POST',
             headers: {
