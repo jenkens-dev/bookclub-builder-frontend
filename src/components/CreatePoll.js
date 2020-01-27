@@ -18,17 +18,21 @@ const CreatePoll = () => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      fetch(`/api/v1/polls`, {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json',
-            Accepts: 'application/json',
+      fetch(
+         `https://bookclub-builder-server.herokuapp.com/
+      api/v1/polls`,
+         {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+               Accepts: 'application/json',
+            },
+            body: JSON.stringify({
+               name: title,
+               bookclub_id: bookclub.id,
+            }),
          },
-         body: JSON.stringify({
-            name: title,
-            bookclub_id: bookclub.id,
-         }),
-      })
+      )
          .then(response => response.json())
          .then(data => {
             dispatch(createPoll(data));

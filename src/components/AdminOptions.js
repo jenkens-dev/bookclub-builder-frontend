@@ -21,16 +21,20 @@ const AdminOptions = () => {
    const classes = useStyles();
 
    const handleClick = () => {
-      fetch(`/api/v1/polls/${poll.id}`, {
-         method: 'PATCH',
-         headers: {
-            'Content-Type': 'application/json',
-            Accepts: 'application/json',
+      fetch(
+         `https://bookclub-builder-server.herokuapp.com/
+      api/v1/polls/${poll.id}`,
+         {
+            method: 'PATCH',
+            headers: {
+               'Content-Type': 'application/json',
+               Accepts: 'application/json',
+            },
+            body: JSON.stringify({
+               active: false,
+            }),
          },
-         body: JSON.stringify({
-            active: false,
-         }),
-      })
+      )
          .then(response => response.json())
          .then(data => {
             dispatch(archivePoll(data));

@@ -8,7 +8,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const MyBookClubs = () => {
    const currentUserId = useSelector(state => state.auth.user.id);
    const [mybookclubs, fetched] = api.useNetworkResource(
-      `/api/v1/${currentUserId}/bookclubs`,
+      `https://bookclub-builder-server.herokuapp.com/
+      api/v1/${currentUserId}/bookclubs`,
    );
 
    const token = localStorage.getItem('token');

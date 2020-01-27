@@ -41,7 +41,8 @@ const BookClubShow = ({ props, match }) => {
    const classes = useStyles();
 
    useEffect(() => {
-      fetch(`/api/v1/bookclubs/${match.params.id}`)
+      fetch(`https://bookclub-builder-server.herokuapp.com/
+      api/v1/bookclubs/${match.params.id}`)
          .then(response => response.json())
          .then(data => {
             setBookclubUsers(data);

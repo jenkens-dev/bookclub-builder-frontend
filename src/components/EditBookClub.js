@@ -66,18 +66,22 @@ const EditBookClub = () => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      fetch(`/api/v1/bookclubs/${bookclubId}`, {
-         method: 'PATCH',
-         headers: {
-            'Content-Type': 'application/json',
-            Accepts: 'application/json',
+      fetch(
+         `https://bookclub-builder-server.herokuapp.com/
+      api/v1/bookclubs/${bookclubId}`,
+         {
+            method: 'PATCH',
+            headers: {
+               'Content-Type': 'application/json',
+               Accepts: 'application/json',
+            },
+            body: JSON.stringify({
+               name,
+               picture,
+               description,
+            }),
          },
-         body: JSON.stringify({
-            name,
-            picture,
-            description,
-         }),
-      })
+      )
          .then(response => response.json())
          .then(data => {
             console.log(data);

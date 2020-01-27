@@ -30,17 +30,21 @@ const MemberOptions = () => {
    const leaveBookClub = () => {
       let index = bookclub.users.findIndex(user => user.id === currentUser.id);
       bookclub.users.splice(index, 1);
-      fetch(`/api/v1/bookclub_users/id`, {
-         method: 'DELETE',
-         headers: {
-            'Content-Type': 'application/json',
-            Accepts: 'application/json',
+      fetch(
+         `https://bookclub-builder-server.herokuapp.com/
+      /api/v1/bookclub_users/id`,
+         {
+            method: 'DELETE',
+            headers: {
+               'Content-Type': 'application/json',
+               Accepts: 'application/json',
+            },
+            body: JSON.stringify({
+               bookclub_id: bookclub.id,
+               user_id: currentUser.id,
+            }),
          },
-         body: JSON.stringify({
-            bookclub_id: bookclub.id,
-            user_id: currentUser.id,
-         }),
-      }).then(response => {
+      ).then(response => {
          if (!response.error) {
             dispatch(updateUser(bookclub.users));
          }
@@ -50,20 +54,23 @@ const MemberOptions = () => {
    const joinBookClub = () => {
       bookclub.users.push(currentUser);
       dispatch(updateUser(bookclub.users));
-      fetch(`/api/v1/bookclub_users`, {
-         method: 'POST',
-         headers: {
-            'Content-Type': 'application/json',
-            Accepts: 'application/json',
+      fetch(
+         `https://bookclub-builder-server.herokuapp.com/
+      api/v1/bookclub_users`,
+         {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+               Accepts: 'application/json',
+            },
+            body: JSON.stringify({
+               bookclub_id: bookclub.id,
+               user_id: currentUser.id,
+            }),
          },
-         body: JSON.stringify({
-            bookclub_id: bookclub.id,
-            user_id: currentUser.id,
-         }),
-      })
+      )
          .then(response => response.json())
-         .then(data => {
-         });
+         .then(data => {});
    };
 
    return (

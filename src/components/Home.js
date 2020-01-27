@@ -7,7 +7,8 @@ import logo from '../logo.png';
 
 const Home = () => {
    const [bookclubs, fetched] = api.useNetworkResource(
-      '/api/v1/bookclubs',
+      `https://bookclub-builder-server.herokuapp.com/
+      api/v1/bookclubs`,
    );
 
    const history = useHistory();
