@@ -6,10 +6,14 @@ import PollShow from './PollShow';
 import AdminOptions from './AdminOptions';
 import MemberOptions from './MemberOptions';
 import BookModal from './BookModal';
+import Avatar from '@material-ui/core/Avatar';
+import AvatarGroup from '@material-ui/lab/AvatarGroup';
 import { makeStyles } from '@material-ui/core/styles';
+import Tooltip from '@material-ui/core/Tooltip';
 
 const BookClubShow = ({ props, match }) => {
    const bookclub = useSelector(state => state.bookclub.bookclub);
+   const users = useSelector(state => state.bookclub.bookclub.users);
    const [bookclubUsers, setBookclubUsers] = useState('');
    const [fetched, setFetched] = useState(false);
    const dispatch = useDispatch();
@@ -80,6 +84,20 @@ const BookClubShow = ({ props, match }) => {
             <h1>{name}</h1>
             {isAdmin() ? <AdminOptions /> : <MemberOptions />}
             <img src={picture} alt="bookclub" className={classes.image} />
+            <h1>Members</h1>
+            <AvatarGroup>
+               {users.map(user => {
+                  return (
+                     <Tooltip title={user.username}>
+                        <Avatar
+                           alt={user.username}
+                           src={user.profile_picture}
+                           key={user.id}
+                        />
+                     </Tooltip>
+                  );
+               })}
+            </AvatarGroup>
             <p>{description}</p>
             {poll && isMember() ? <PollShow /> : null}
          </div>
