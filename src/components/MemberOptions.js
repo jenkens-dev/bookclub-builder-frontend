@@ -30,7 +30,7 @@ const MemberOptions = () => {
    const leaveBookClub = () => {
       let index = bookclub.users.findIndex(user => user.id === currentUser.id);
       bookclub.users.splice(index, 1);
-      fetch(`http://localhost:3000/api/v1/bookclub_users/id`, {
+      fetch(`/api/v1/bookclub_users/id`, {
          method: 'DELETE',
          headers: {
             'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ const MemberOptions = () => {
    const joinBookClub = () => {
       bookclub.users.push(currentUser);
       dispatch(updateUser(bookclub.users));
-      fetch(`http://localhost:3000/api/v1/bookclub_users`, {
+      fetch(`/api/v1/bookclub_users`, {
          method: 'POST',
          headers: {
             'Content-Type': 'application/json',
