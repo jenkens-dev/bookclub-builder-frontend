@@ -21,7 +21,7 @@ const PollOptionShow = props => {
       media: {
          height: 345,
          width: '100%',
-         objectFit: 'cover',
+         objectFit: 'contain',
       },
    });
 
