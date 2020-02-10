@@ -36,7 +36,7 @@ const Home = () => {
 
    return (
       <div className={classes.root}>
-         <img src={logo} />
+         <img src={logo} alt="logo" />
          <div className={classes.root}>
             {bookclubs.map(bookclub => (
                <BookClubCard key={bookclub.id} bookclub={bookclub} />

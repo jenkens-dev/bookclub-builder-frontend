@@ -2,6 +2,7 @@
    "name": "bookclub-builder-frontend",
    "version": "0.1.0",
    "private": true,
+   "homepage": "http://taljjaa.github.io/bookclub-builder-frontend",
    "dependencies": {
       "@material-ui/core": "^4.9.0",
       "@material-ui/icons": "^4.5.1",
@@ -23,6 +24,8 @@
       "serve": "^11.3.0"
    },
    "scripts": {
+      "predeploy": "npm run build",
+      "deploy": "gh-pages -d build",
       "start": "serve -s build",
       "build": "react-scripts build",
       "test": "react-scripts test",
@@ -42,5 +45,8 @@
          "last 1 firefox version",
          "last 1 safari version"
       ]
+   },
+   "devDependencies": {
+      "gh-pages": "^2.2.0"
    }
 }
