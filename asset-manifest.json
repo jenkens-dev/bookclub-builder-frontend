@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/bookclub-builder-frontend/static/css/main.622488f0.chunk.css",
-    "main.js": "/bookclub-builder-frontend/static/js/main.556e85c9.chunk.js",
-    "main.js.map": "/bookclub-builder-frontend/static/js/main.556e85c9.chunk.js.map",
+    "main.js": "/bookclub-builder-frontend/static/js/main.da2a7337.chunk.js",
+    "main.js.map": "/bookclub-builder-frontend/static/js/main.da2a7337.chunk.js.map",
     "runtime-main.js": "/bookclub-builder-frontend/static/js/runtime-main.b2d5f707.js",
     "runtime-main.js.map": "/bookclub-builder-frontend/static/js/runtime-main.b2d5f707.js.map",
     "static/css/2.df1c6120.chunk.css": "/bookclub-builder-frontend/static/css/2.df1c6120.chunk.css",
-    "static/js/2.3b8daad1.chunk.js": "/bookclub-builder-frontend/static/js/2.3b8daad1.chunk.js",
-    "static/js/2.3b8daad1.chunk.js.map": "/bookclub-builder-frontend/static/js/2.3b8daad1.chunk.js.map",
+    "static/js/2.2f40c8f3.chunk.js": "/bookclub-builder-frontend/static/js/2.2f40c8f3.chunk.js",
+    "static/js/2.2f40c8f3.chunk.js.map": "/bookclub-builder-frontend/static/js/2.2f40c8f3.chunk.js.map",
     "index.html": "/bookclub-builder-frontend/index.html",
-    "precache-manifest.84d481e4dcd2285e665258cb3b1b1edd.js": "/bookclub-builder-frontend/precache-manifest.84d481e4dcd2285e665258cb3b1b1edd.js",
+    "precache-manifest.3f09b3d850a608952ceab97379a8bd09.js": "/bookclub-builder-frontend/precache-manifest.3f09b3d850a608952ceab97379a8bd09.js",
     "service-worker.js": "/bookclub-builder-frontend/service-worker.js",
     "static/css/2.df1c6120.chunk.css.map": "/bookclub-builder-frontend/static/css/2.df1c6120.chunk.css.map",
     "static/css/main.622488f0.chunk.css.map": "/bookclub-builder-frontend/static/css/main.622488f0.chunk.css.map",
-    "static/js/2.3b8daad1.chunk.js.LICENSE": "/bookclub-builder-frontend/static/js/2.3b8daad1.chunk.js.LICENSE",
+    "static/js/2.2f40c8f3.chunk.js.LICENSE": "/bookclub-builder-frontend/static/js/2.2f40c8f3.chunk.js.LICENSE",
     "static/media/logo.png": "/bookclub-builder-frontend/static/media/logo.20cf9821.png"
   },
   "entrypoints": [
     "static/js/runtime-main.b2d5f707.js",
     "static/css/2.df1c6120.chunk.css",
-    "static/js/2.3b8daad1.chunk.js",
+    "static/js/2.2f40c8f3.chunk.js",
     "static/css/main.622488f0.chunk.css",
-    "static/js/main.556e85c9.chunk.js"
+    "static/js/main.da2a7337.chunk.js"
   ]
 }
