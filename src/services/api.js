@@ -20,7 +20,7 @@ const useNetworkResource = url => {
          try {
             const response = await fetch(url);
             // show off our pretty loading experience because our backend is too blazing fast to need a loader
-            // await new Promise(resolve => setTimeout(() => resolve(), 1000));
+            // await new Promise(resolve => setTimeout(() => resolve(), 30000));
 
             if (response.status !== 200) {
                throw new Error('bad');

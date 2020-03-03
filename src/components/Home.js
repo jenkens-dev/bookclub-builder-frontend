@@ -4,6 +4,7 @@ import BookClubCard from './BookClubCard';
 import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import logo from '../logo.png';
+import bookLoader from '../Book_Loading.gif';
 
 const Home = () => {
    const [bookclubs, fetched] = api.useNetworkResource(
@@ -22,6 +23,16 @@ const Home = () => {
          alignContent: 'center',
          height: '100%',
       },
+      flex: {
+         display: 'flex',
+         flexDirection: 'column',
+         justifyContent: 'center',
+         alignContent: 'center',
+         minHeight: '100vh',
+      },
+      image: {
+         objectFit: 'none',
+      },
    });
 
    const classes = useStyles();
@@ -31,7 +42,12 @@ const Home = () => {
    }
 
    if (!fetched) {
-      return null;
+      return (
+         <div className={classes.flex}>
+            {/* <img src={logo} alt="logo" /> */}
+            <img src={bookLoader} className={classes.image} />
+         </div>
+      );
    }
 
    return (

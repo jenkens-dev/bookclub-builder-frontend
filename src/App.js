@@ -20,9 +20,9 @@ const theme = createMuiTheme({
 function App() {
    return (
       <ThemeProvider theme={theme}>
-         <HashRouter basename="/">
+         {/* <HashRouter basename="/"> */}
             <MainContainer />
-         </HashRouter>
+         {/* </HashRouter> */}
       </ThemeProvider>
    );
 }
