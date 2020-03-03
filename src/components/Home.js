@@ -45,7 +45,11 @@ const Home = () => {
       return (
          <div className={classes.flex}>
             {/* <img src={logo} alt="logo" /> */}
-            <img src={bookLoader} className={classes.image} />
+            <img
+               src={bookLoader}
+               className={classes.image}
+               alt="loading icon"
+            />
          </div>
       );
    }
