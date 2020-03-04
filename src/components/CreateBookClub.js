@@ -57,22 +57,19 @@ const CreateBookClub = () => {
 
    const handleSubmit = event => {
       event.preventDefault();
-      fetch(
-         `https://bookclub-builder-server.herokuapp.com/api/v1/bookclubs`,
-         {
-            method: 'POST',
-            headers: {
-               'Content-Type': 'application/json',
-               Accepts: 'application/json',
-            },
-            body: JSON.stringify({
-               name,
-               picture,
-               description,
-               id: currentUserId,
-            }),
+      fetch(`https://bookclub-builder-server.herokuapp.com/api/v1/bookclubs`, {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+            Accepts: 'application/json',
          },
-      )
+         body: JSON.stringify({
+            name,
+            picture,
+            description,
+            id: currentUserId,
+         }),
+      })
          .then(response => response.json())
          .then(data => {
             history.push('/');

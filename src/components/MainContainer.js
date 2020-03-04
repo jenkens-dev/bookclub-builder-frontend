@@ -24,7 +24,7 @@ const MainContainer = props => {
             />
             <Route
                exact
-               path="/signup"
+               path="/testing"
                render={routerProps => <SignUp {...routerProps} />}
             />
             <Route

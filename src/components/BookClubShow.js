@@ -52,7 +52,7 @@ const BookClubShow = ({ props, match }) => {
          .finally(() => {
             setFetched(true);
          });
-   }, [match.params.id]);
+   }, [match.params.id, dispatch]);
 
    if (!token || !currentUser.id) {
       history.push('/login');
