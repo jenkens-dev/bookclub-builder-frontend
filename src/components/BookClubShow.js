@@ -90,7 +90,7 @@ const BookClubShow = ({ props, match }) => {
             <AvatarGroup>
                {users.map(user => {
                   return (
-                     <Tooltip title={user.username}>
+                     <Tooltip title={user.username} key={user.id}>
                         <Avatar
                            alt={user.username}
                            src={user.profile_picture}
