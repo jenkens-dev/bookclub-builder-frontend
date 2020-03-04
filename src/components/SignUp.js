@@ -62,6 +62,7 @@ const SignUp = props => {
       S3FileUpload.uploadFile(e.target.files[0], config)
          .then(data => {
             setPicture(data.location);
+            console.log('uploading picture');
          })
          .catch(error => {
             alert(error);
