@@ -11,7 +11,7 @@ import CreateBookClub from './CreateBookClub';
 import MyBookClub from './MyBookClubs';
 import PollOptions from './PollOptions';
 
-const MainContainer = props => {
+const MainContainer = (props) => {
    return (
       <Router>
          <div>
@@ -20,42 +20,42 @@ const MainContainer = props => {
             <Route
                exact
                path="/login"
-               render={routerProps => <Login {...routerProps} />}
+               render={(routerProps) => <Login {...routerProps} />}
             />
             <Route
                exact
                path="/signup"
-               render={routerProps => <SignUp {...routerProps} />}
+               render={(routerProps) => <SignUp {...routerProps} />}
             />
             <Route
                exact
                path="/bookclubs/:id"
-               render={routerProps => <BookClubShow {...routerProps} />}
+               render={(routerProps) => <BookClubShow {...routerProps} />}
             />
             <Route
                exact
                path="/bookclubs/:id/poll"
-               render={routerProps => <CreatePoll {...routerProps} />}
+               render={(routerProps) => <CreatePoll {...routerProps} />}
             />
             <Route
                exact
                path="/bookclubs/:id/:poll_id/options"
-               render={routerProps => <PollOptions {...routerProps} />}
+               render={(routerProps) => <PollOptions {...routerProps} />}
             />
             <Route
                exact
                path="/bookclubs/:id/edit"
-               render={routerProps => <EditBookClub {...routerProps} />}
+               render={(routerProps) => <EditBookClub {...routerProps} />}
             />
             <Route
                exact
                path="/bookclubs"
-               render={routerProps => <CreateBookClub {...routerProps} />}
+               render={(routerProps) => <CreateBookClub {...routerProps} />}
             />
             <Route
                exact
                path="/:id/bookclubs"
-               render={routerProps => <MyBookClub {...routerProps} />}
+               render={(routerProps) => <MyBookClub {...routerProps} />}
             />
          </div>
       </Router>

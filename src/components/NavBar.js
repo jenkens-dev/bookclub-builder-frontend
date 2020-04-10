@@ -2,10 +2,9 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link, useHistory } from 'react-router-dom';
 import { SIGN_OUT as signOut } from '../actions/auth';
-import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 
 const NavBar = () => {
