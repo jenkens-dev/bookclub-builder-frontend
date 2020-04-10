@@ -73,7 +73,9 @@ const Login = (props) => {
                   </Grid>
                   <Grid item xs={5}>
                      <Typography>
-                        <Link to="/signup">Sign Up</Link>
+                        <Link to="/signup">
+                           <Button>Sign Up</Button>
+                        </Link>
                      </Typography>
                   </Grid>
                </Grid>
