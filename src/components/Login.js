@@ -7,11 +7,26 @@ import Grid from '@material-ui/core/Grid';
 import { api } from '../services/api';
 import { SIGN_IN as signIn } from '../actions/auth';
 import { useDispatch } from 'react-redux';
+import { makeStyles } from '@material-ui/core/styles';
 
 const Login = (props) => {
    const [username, setUsername] = useState('');
    const [password, setPassword] = useState('');
    const dispatch = useDispatch();
+
+   const useStyles = makeStyles((theme) => ({
+      root: {
+         '& > *': {
+            margin: theme.spacing(1),
+         },
+      },
+      links: {
+         color: 'white',
+         textDecoration: 'none',
+      },
+   }));
+
+   const classes = useStyles();
 
    const handleUsernameChange = (e) => {
       setUsername(e.target.value);
@@ -19,6 +34,10 @@ const Login = (props) => {
 
    const handlePasswordChange = (e) => {
       setPassword(e.target.value);
+   };
+
+   const handleClick = () => {
+      props.history.push('/signup');
    };
 
    const handleSubmit = (e) => {
@@ -73,9 +92,13 @@ const Login = (props) => {
                   </Grid>
                   <Grid item xs={5}>
                      <Typography>
-                        <Link to="/signup">
-                           <Button>Sign Up</Button>
-                        </Link>
+                        <Button
+                           variant="contained"
+                           color="primary"
+                           onClick={() => props.history.push('/signup')}
+                        >
+                           Sign Up
+                        </Button>
                      </Typography>
                   </Grid>
                </Grid>
