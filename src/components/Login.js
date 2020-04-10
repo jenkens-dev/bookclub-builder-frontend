@@ -8,22 +8,22 @@ import { api } from '../services/api';
 import { SIGN_IN as signIn } from '../actions/auth';
 import { useDispatch } from 'react-redux';
 
-const Login = props => {
+const Login = (props) => {
    const [username, setUsername] = useState('');
    const [password, setPassword] = useState('');
    const dispatch = useDispatch();
 
-   const handleUsernameChange = e => {
+   const handleUsernameChange = (e) => {
       setUsername(e.target.value);
    };
 
-   const handlePasswordChange = e => {
+   const handlePasswordChange = (e) => {
       setPassword(e.target.value);
    };
 
-   const handleSubmit = e => {
+   const handleSubmit = (e) => {
       e.preventDefault();
-      api.auth.login({ username, password }).then(response => {
+      api.auth.login({ username, password }).then((response) => {
          if (response.error) {
             console.log(response.error);
          } else {
@@ -73,7 +73,7 @@ const Login = props => {
                   </Grid>
                   <Grid item xs={5}>
                      <Typography>
-                        <Link href="/signup">Sign Up</Link>
+                        <Link href="/signin">Sign Up</Link>
                      </Typography>
                   </Grid>
                </Grid>

@@ -10,6 +10,7 @@ import NavBar from './NavBar';
 import CreateBookClub from './CreateBookClub';
 import MyBookClub from './MyBookClubs';
 import PollOptions from './PollOptions';
+import SignIn from './SignIn';
 
 const MainContainer = (props) => {
    return (
@@ -17,6 +18,11 @@ const MainContainer = (props) => {
          <div>
             <NavBar />
             <Route exact path="/" render={() => <Home />} />
+            <Route
+               exact
+               path="/signin"
+               render={(routerProps) => <SignIn {...routerProps} />}
+            />
             <Route
                exact
                path="/login"
